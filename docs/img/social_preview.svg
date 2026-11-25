@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640"
+     font-family="'Liberation Sans', 'DejaVu Sans', Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Poisoned RAGuard</title>
+  <desc id="d">Social preview card: PoisonedRAG reproduced on modern RAG stacks. Attack success 0.70 to 0.99; poison takes 4.5 to 4.8 of 5 retrieved slots; TrustRAG cuts it to 0.08 to 0.09, but only against near-duplicate poison.</desc>
+  <rect width="1280" height="640" fill="#0d1117"/>
+  <rect x="0" y="0" width="1280" height="6" fill="#d95926"/>
+
+  <!-- header -->
+  <text x="72" y="92" font-size="22" fill="#8b949e" letter-spacing="1.5">REPRODUCING A USENIX SECURITY 2025 ATTACK · DEFENSE STUDY</text>
+  <text x="68" y="186" font-size="92" font-weight="700" fill="#e6edf3">Poisoned RAGuard</text>
+  <text x="72" y="240" font-size="31" fill="#b1bac4">Can 5 poisoned passages still hijack a modern RAG system?</text>
+
+  <!-- 5 retrieved slots motif: 4 poison + 1 mostly poison -->
+  <g transform="translate(1000,128)">
+    <rect x="0"   y="0" width="40" height="40" rx="6" fill="#d95926"/>
+    <rect x="48"  y="0" width="40" height="40" rx="6" fill="#d95926"/>
+    <rect x="96"  y="0" width="40" height="40" rx="6" fill="#d95926"/>
+    <rect x="144" y="0" width="40" height="40" rx="6" fill="#d95926"/>
+    <rect x="192" y="0" width="40" height="40" rx="6" fill="#262c35"/>
+    <rect x="192" y="0" width="25" height="40" rx="6" fill="#d95926"/>
+    <text x="116" y="70" font-size="17" fill="#8b949e" text-anchor="middle">top-5 retrieved: 4.6 poison</text>
+  </g>
+
+  <!-- stat cards -->
+  <g>
+    <rect x="72" y="298" width="356" height="200" rx="14" fill="#161b22" stroke="#30363d"/>
+    <text x="100" y="372" font-size="58" font-weight="700" fill="#f0883e">0.70–0.99</text>
+    <text x="100" y="418" font-size="22" fill="#e6edf3">attack success with no defense</text>
+    <text x="100" y="448" font-size="19" fill="#8b949e">modern embedder, reranker and</text>
+    <text x="100" y="474" font-size="19" fill="#8b949e">reasoning LLMs</text>
+
+    <rect x="462" y="298" width="356" height="200" rx="14" fill="#161b22" stroke="#30363d"/>
+    <text x="490" y="372" font-size="58" font-weight="700" fill="#e6edf3">0 of 4</text>
+    <text x="490" y="418" font-size="22" fill="#e6edf3">of the paper&apos;s defenses stop it</text>
+    <text x="490" y="448" font-size="19" fill="#8b949e">best: knowledge expansion,</text>
+    <text x="490" y="474" font-size="19" fill="#8b949e">0.79 → 0.39 (gpt-oss)</text>
+
+    <rect x="852" y="298" width="356" height="200" rx="14" fill="#161b22" stroke="#3987e5" stroke-width="2"/>
+    <text x="880" y="372" font-size="58" font-weight="700" fill="#58a6ff">0.08–0.09</text>
+    <text x="880" y="418" font-size="22" fill="#e6edf3">with TrustRAG, every LLM</text>
+    <text x="880" y="448" font-size="19" fill="#8b949e">but only because the poison</text>
+    <text x="880" y="474" font-size="19" fill="#8b949e">texts are near-duplicates</text>
+  </g>
+
+  <!-- footer -->
+  <text x="72" y="566" font-size="21" fill="#b1bac4">2.68M-passage NQ corpus · Vicuna-7B · Qwen3.5-27B · gpt-oss-120b · 69 full runs · $0 API cost</text>
+  <text x="72" y="600" font-size="19" fill="#8b949e">github.com/Parth-Pitrubhakta/Poisoned_RAGuard</text>
+</svg>

@@ -1,0 +1,60 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below, and cite the original PoisonedRAG paper (see references)."
+title: "Poisoned RAGuard: PoisonedRAG reproduced, modernized, and evaluated against defenses"
+type: software
+authors:
+  - given-names: Parth
+    family-names: Pitrubhakta
+repository-code: "https://github.com/Parth-Pitrubhakta/Poisoned_RAGuard"
+version: 1.0.0
+date-released: 2026-11-25
+abstract: >-
+  A faithful reproduction of the PoisonedRAG knowledge-corruption attack (USENIX Security 2025) on BEIR Natural
+  Questions, extended to modern RAG stacks (Qwen3-Embedding-8B, Qwen3-Reranker-4B, Qwen3.5-27B, gpt-oss-120b) and
+  evaluated against five defenses including TrustRAG. Five poisoned passages in a 2.68M-passage corpus still drive
+  attack success to 0.70-0.99; only TrustRAG reduces it below 0.10, and only because the published poison texts are
+  near-duplicates of each other. Includes per-question traces tooling, 71 CPU tests and a Streamlit dashboard.
+keywords:
+  - retrieval-augmented generation
+  - knowledge poisoning
+  - LLM security
+  - adversarial machine learning
+  - reproducibility
+  - TrustRAG
+references:
+  - type: conference-paper
+    title: "PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models"
+    authors:
+      - given-names: Wei
+        family-names: Zou
+      - given-names: Runpeng
+        family-names: Geng
+      - given-names: Binghui
+        family-names: Wang
+      - given-names: Jinyuan
+        family-names: Jia
+    collection-title: "34th USENIX Security Symposium (USENIX Security 25)"
+    start: 3827
+    end: 3844
+    year: 2025
+  - type: article
+    title: "TrustRAG: Enhancing Robustness and Trustworthiness in Retrieval-Augmented Generation"
+    authors:
+      - given-names: Huichi
+        family-names: Zhou
+      - given-names: Kin-Hei
+        family-names: Lee
+      - given-names: Zhonghao
+        family-names: Zhan
+      - given-names: Yue
+        family-names: Chen
+      - given-names: Zhenhao
+        family-names: Li
+      - given-names: Zhaoyang
+        family-names: Wang
+      - given-names: Hamed
+        family-names: Haddadi
+      - given-names: Emine
+        family-names: Yilmaz
+    journal: "arXiv preprint arXiv:2501.00879"
+    year: 2025

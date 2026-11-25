@@ -297,3 +297,5 @@ ASR on the post-split final answer for Qwen3.5-27B / gpt-oss; check that all 4 G
   Rescan of every file that would be committed: no IP, hostname, home path or username left.
 - README clone links → github.com/Parth-Pitrubhakta/Poisoned_RAGuard (user-provided).
 - README title → "Poisoned RAGuard" (user request); tagline "six defenses" corrected to five.
+- GitHub metadata: `CITATION.cff` (author from the GitHub username; PoisonedRAG + TrustRAG as references; YAML parses) and
+  `docs/img/social_preview.{svg,png}` (1280×640, rendered with system librsvg). Numbers from RESULTS; no poison text.
