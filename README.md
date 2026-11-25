@@ -1,9 +1,11 @@
 <div align="center">
 
-# PoisonedRAG, Modernized
+# Poisoned RAGuard
+
+*PoisonedRAG (USENIX Security 2025), reproduced, modernized, and put against defenses*
 
 **Five poisoned passages in a 2.68-million-passage knowledge base still hijack modern RAG systems.<br>
-We reproduce the USENIX Security 2025 attack, rerun it on modern retrievers and LLMs, and test six defenses.**
+We reproduce the attack, rerun it on modern retrievers and LLMs, and test five defenses.**
 
 ![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.13-EE4C2C?logo=pytorch&logoColor=white)

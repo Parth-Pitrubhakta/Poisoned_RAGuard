@@ -296,3 +296,4 @@ ASR on the post-split final answer for Qwen3.5-27B / gpt-oss; check that all 4 G
 - Redaction before publishing (user-approved step 2): server IP → `<campus-ip>` in RUNLOG (2 lines); SURVEY hostname → `(redacted)`, username → `<user>`.
   Rescan of every file that would be committed: no IP, hostname, home path or username left.
 - README clone links → github.com/Parth-Pitrubhakta/Poisoned_RAGuard (user-provided).
+- README title → "Poisoned RAGuard" (user request); tagline "six defenses" corrected to five.
