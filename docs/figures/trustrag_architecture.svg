@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TrustRAG defense as applied in the poisonedrag-modern PoisonedRAG pipeline (NQ, Step 5).
+  Hand-authored SVG. Coordinates are in px of a 1200-wide canvas; docs/figures/README.md explains how to edit and re-check it.
+  Every number comes from experiments/RESULTS.md (Step 5 tables D1-D3, Limitations) or
+  experiments/defenses/trustrag_filter_simcse_*.json. Stage logic follows src/prag/defenses/trustrag.py.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="796" viewBox="0 0 1200 796"
+     font-family="Helvetica, Arial, 'Liberation Sans', 'Nimbus Sans', sans-serif" role="img"
+     aria-labelledby="fig-title fig-desc">
+  <title id="fig-title">TrustRAG defense in the PoisonedRAG pipeline</title>
+  <desc id="fig-desc">Left to right: query and poisoned knowledge base feed the retriever, which returns a top-5 holding on average 4.65 poison and 0.35 clean passages. TrustRAG stage 1 re-embeds the top-k with SimCSE, gates on ROUGE-L overlap above 0.25, clusters with K-means (k = 2) and drops clusters whose mean cosine exceeds 0.88, cutting poison reaching the LLM from 4.65 to 0.09 per question. Stage 2 makes three calls to the target LLM (internal knowledge, consolidation, final answer). Robust attack success falls from 0.85 to 0.09; Vicuna-7B loses 0.07 clean accuracy. Caveat: the filter works because the five poison texts per question are near-duplicates.</desc>
+
+  <defs>
+    <style>
+      .ink  { fill: #1f1e1c; }
+      .ink2 { fill: #55534e; }
+      .ink3 { fill: #7a7873; }
+      .pz   { fill: #a8302f; }
+      .cl   { fill: #127552; }
+      .h1   { font-size: 17px; font-weight: 700; }
+      .h2   { font-size: 15px; font-weight: 700; }
+      .h3   { font-size: 13px; font-weight: 700; }
+      .b    { font-size: 12.5px; }
+      .s    { font-size: 12px; }
+      .mono { font-family: 'Courier New', 'Liberation Mono', 'Nimbus Mono PS', monospace; font-size: 11.5px; }
+      .halo { paint-order: stroke; stroke: #ffffff; stroke-width: 3px; stroke-linejoin: round; }
+      .flow { fill: none; stroke: #4a4842; stroke-width: 1.4; }
+      .call { fill: none; stroke: #2a78d6; stroke-width: 1.3; stroke-dasharray: 5 3; }
+      .byp  { fill: none; stroke: #4a4842; stroke-width: 1.3; stroke-dasharray: 4 3; }
+    </style>
+
+    <!-- poison = diagonal hatch (colour-independent cue); soft variant sits behind text -->
+    <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="5" height="5" fill="#fde8e8"/>
+      <line x1="0" y1="0" x2="0" y2="5" stroke="#e34948" stroke-width="2"/>
+    </pattern>
+    <pattern id="hatchSoft" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#fdeeee"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#f0a09f" stroke-width="1.6"/>
+    </pattern>
+
+    <!-- arrowheads (tip at the path end point) -->
+    <marker id="ah" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0.5 L10,5 L0,9.5 Z" fill="#4a4842"/>
+    </marker>
+    <marker id="ahBlueEnd" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0.5 L10,5 L0,9.5 Z" fill="#2a78d6"/>
+    </marker>
+    <marker id="ahBlueStart" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="userSpaceOnUse"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M10,0.5 L0,5 L10,9.5 Z" fill="#2a78d6"/>
+    </marker>
+
+    <!-- icons -->
+    <symbol id="warn" viewBox="0 0 16 14">
+      <path d="M8,0.8 L15.3,13.3 L0.7,13.3 Z" fill="#f2b632" stroke="#8a5a0b" stroke-width="1" stroke-linejoin="round"/>
+      <rect x="7.2" y="4.4" width="1.6" height="5" fill="#3d2a05"/>
+      <rect x="7.2" y="10.4" width="1.6" height="1.6" fill="#3d2a05"/>
+    </symbol>
+    <symbol id="tri" viewBox="0 0 10 9">
+      <path d="M5,0.5 L9.5,8.5 L0.5,8.5 Z" fill="#e34948" stroke="#a8302f" stroke-width="0.8" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="796" fill="#ffffff"/>
+
+  <!-- ================= 1 · Query ================= -->
+  <g id="query">
+    <rect x="16" y="96" width="168" height="62" rx="8" fill="#f0efec" stroke="#8a8984" stroke-width="1.2"/>
+    <circle cx="36" cy="116" r="10" fill="#3d3c39"/>
+    <text x="36" y="120.5" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">1</text>
+    <text x="54" y="121" class="h2 ink">Query <tspan font-style="italic">q</tspan></text>
+    <text x="30" y="146" class="b ink2">NQ target question</text>
+  </g>
+
+  <!-- ================= 2 · Poisoned knowledge base ================= -->
+  <g id="kb">
+    <path d="M16,214 A84,11 0 0 1 184,214 V470 A84,11 0 0 1 16,470 Z" fill="#fbfaf7" stroke="#8a8984" stroke-width="1.2"/>
+    <path d="M16,214 A84,11 0 0 0 184,214" fill="none" stroke="#8a8984" stroke-width="1.2"/>
+    <circle cx="34" cy="249" r="10" fill="#3d3c39"/>
+    <text x="34" y="253.5" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">2</text>
+    <text x="50" y="245" class="ink" font-size="14.5" font-weight="700">Poisoned</text>
+    <text x="50" y="262" class="ink" font-size="14.5" font-weight="700">knowledge base</text>
+
+    <!-- clean passages: solid tint + check mark -->
+    <g stroke="#1baf7a" stroke-width="1" fill="#d3efe2">
+      <rect x="30"  y="278" width="30" height="11" rx="2"/><rect x="67"  y="278" width="30" height="11" rx="2"/>
+      <rect x="104" y="278" width="30" height="11" rx="2"/><rect x="141" y="278" width="30" height="11" rx="2"/>
+      <rect x="30"  y="294" width="30" height="11" rx="2"/><rect x="67"  y="294" width="30" height="11" rx="2"/>
+      <rect x="104" y="294" width="30" height="11" rx="2"/><rect x="141" y="294" width="30" height="11" rx="2"/>
+      <rect x="30"  y="310" width="30" height="11" rx="2"/><rect x="67"  y="310" width="30" height="11" rx="2"/>
+      <rect x="104" y="310" width="30" height="11" rx="2"/><rect x="141" y="310" width="30" height="11" rx="2"/>
+    </g>
+    <g stroke="#127552" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40,283.5 l2.5,2.5 l5,-5"/><path d="M77,283.5 l2.5,2.5 l5,-5"/><path d="M114,283.5 l2.5,2.5 l5,-5"/><path d="M151,283.5 l2.5,2.5 l5,-5"/>
+      <path d="M40,299.5 l2.5,2.5 l5,-5"/><path d="M77,299.5 l2.5,2.5 l5,-5"/><path d="M114,299.5 l2.5,2.5 l5,-5"/><path d="M151,299.5 l2.5,2.5 l5,-5"/>
+      <path d="M40,315.5 l2.5,2.5 l5,-5"/><path d="M77,315.5 l2.5,2.5 l5,-5"/><path d="M114,315.5 l2.5,2.5 l5,-5"/><path d="M151,315.5 l2.5,2.5 l5,-5"/>
+    </g>
+    <text x="30" y="342" class="h3 cl">Clean corpus</text>
+    <text x="30" y="359" class="b ink">2,681,468 NQ passages</text>
+
+    <!-- poison passages: hatched -->
+    <g stroke="#e34948" stroke-width="1.1" fill="url(#hatch)">
+      <rect x="30"  y="376" width="24" height="11" rx="2"/><rect x="59"  y="376" width="24" height="11" rx="2"/>
+      <rect x="88"  y="376" width="24" height="11" rx="2"/><rect x="117" y="376" width="24" height="11" rx="2"/>
+      <rect x="146" y="376" width="24" height="11" rx="2"/>
+    </g>
+    <text x="30" y="408" class="h3 pz">Injected poison</text>
+    <text x="30" y="425" class="b ink">5 per target question</text>
+    <text x="30" y="441" class="s ink2">(500 in total)</text>
+    <text x="30" y="457" class="mono ink2">q + "." + adv_text</text>
+  </g>
+
+  <!-- ================= 3 · Retriever ================= -->
+  <g id="retriever">
+    <rect x="208" y="150" width="180" height="306" rx="10" fill="#f4f8fd" stroke="#2a78d6" stroke-width="1.4"/>
+    <circle cx="228" cy="172" r="10" fill="#3d3c39"/>
+    <text x="228" y="176.5" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">3</text>
+    <text x="246" y="177" class="h2 ink">Retriever</text>
+
+    <rect x="220" y="190" width="156" height="56" rx="6" fill="#ffffff" stroke="#2a78d6" stroke-width="1.1"/>
+    <text x="230" y="209" class="h3 ink">Encoder</text>
+    <text x="230" y="226" class="s ink">Contriever (paper) or</text>
+    <text x="230" y="241" class="s ink">Qwen3-Embedding-8B</text>
+
+    <rect x="220" y="256" width="156" height="64" rx="6" fill="#ffffff" stroke="#2a78d6" stroke-width="1.1"/>
+    <text x="230" y="275" class="h3 ink">FAISS IndexFlatIP</text>
+    <text x="230" y="292" class="s ink">exact dot product*</text>
+    <text x="230" y="307" class="s ink2">returns clean top-n</text>
+
+    <rect x="220" y="330" width="156" height="62" rx="6" fill="#ffffff" stroke="#8a8984" stroke-width="1.1"/>
+    <text x="230" y="349" class="h3 ink">Merge</text>
+    <text x="230" y="366" class="s ink">clean top-n + all poison</text>
+    <text x="230" y="381" class="s ink">scored by same encoder</text>
+
+    <rect x="220" y="402" width="156" height="42" rx="6" fill="#ffffff" stroke="#2a78d6" stroke-width="1.1" stroke-dasharray="4 3"/>
+    <text x="230" y="419" class="s ink">+ Qwen3-Reranker-4B</text>
+    <text x="230" y="435" class="s ink2">optional: top-20 → top-5</text>
+
+    <path class="flow" d="M298,246 V255" marker-end="url(#ah)"/>
+    <path class="flow" d="M298,320 V329" marker-end="url(#ah)"/>
+    <path class="byp"  d="M298,392 V401" marker-end="url(#ah)"/>
+  </g>
+
+  <!-- inputs into the retriever -->
+  <path class="flow" d="M184,127 H200 V218 H219" marker-end="url(#ah)"/>
+  <path class="flow" d="M184,288 H219" marker-end="url(#ah)"/>
+  <path class="flow" d="M184,381 H196 V361 H219" marker-end="url(#ah)"/>
+
+  <!-- ================= retrieved top-k ================= -->
+  <g id="topk">
+    <path class="flow" d="M388,320 H407" marker-end="url(#ah)"/>
+    <text x="452" y="238" text-anchor="middle" class="ink" font-size="13.5" font-weight="700">top-k = 5</text>
+    <g stroke="#e34948" stroke-width="1.2" fill="url(#hatchSoft)">
+      <rect x="408" y="248" width="88" height="24" rx="4"/>
+      <rect x="408" y="278" width="88" height="24" rx="4"/>
+      <rect x="408" y="308" width="88" height="24" rx="4"/>
+      <rect x="408" y="338" width="88" height="24" rx="4"/>
+    </g>
+    <g font-size="12" font-weight="700" fill="#8f2423" text-anchor="middle" class="halo">
+      <text x="452" y="264.5">poison</text>
+      <text x="452" y="294.5">poison</text>
+      <text x="452" y="324.5">poison</text>
+      <text x="452" y="354.5">poison</text>
+    </g>
+    <!-- slot 5: average mix, 65 % poison / 35 % clean -->
+    <rect x="408" y="368" width="57.2" height="24" fill="url(#hatchSoft)"/>
+    <rect x="465.2" y="368" width="30.8" height="24" fill="#e3f6ee"/>
+    <line x1="465.2" y1="368" x2="465.2" y2="392" stroke="#1baf7a" stroke-width="1.2"/>
+    <rect x="408" y="368" width="88" height="24" rx="4" fill="none" stroke="#7a7873" stroke-width="1.2"/>
+    <text x="452" y="384.5" text-anchor="middle" font-size="12" font-weight="700" class="ink2 halo">mixed</text>
+
+    <text x="452" y="413" text-anchor="middle" class="s ink2">mean per question</text>
+    <text x="452" y="430" text-anchor="middle" class="h3 pz">4.65 poison</text>
+    <text x="452" y="446" text-anchor="middle" class="h3 cl">+ 0.35 clean</text>
+  </g>
+
+  <!-- ================= 4 · TrustRAG defense ================= -->
+  <g id="trustrag">
+    <rect x="516" y="28" width="522" height="660" rx="12" fill="#f6f3ea" stroke="#4a4842" stroke-width="2"/>
+    <circle cx="536" cy="52" r="10" fill="#3d3c39"/>
+    <text x="536" y="56.5" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">4</text>
+    <text x="554" y="58" class="h1 ink">TrustRAG defense</text>
+    <text x="1026" y="57" text-anchor="end" class="s ink2">Zhou et al., 2025 · HuichiZhou/TrustRAG @ 11dcea0</text>
+
+    <!-- Stage 1 -->
+    <rect x="528" y="72" width="242" height="488" rx="8" fill="#ffffff" stroke="#8a8984" stroke-width="1.2"/>
+    <text x="540" y="95" class="h2 ink">Stage 1</text>
+    <text x="540" y="113" class="h3 ink">Clean retrieval (filter)</text>
+    <text x="540" y="130" class="s ink2">re-embeds top-k with SimCSE</text>
+    <text x="540" y="145" class="s ink3">sup-simcse-bert-base-uncased</text>
+
+    <!-- a · n-gram gate -->
+    <rect x="540" y="156" width="218" height="42" rx="6" fill="#f0efec" stroke="#8a8984" stroke-width="1.1"/>
+    <circle cx="553" cy="171" r="8" fill="#ffffff" stroke="#3d3c39" stroke-width="1.2"/>
+    <text x="553" y="175" text-anchor="middle" font-size="11" font-weight="700" class="ink">a</text>
+    <text x="567" y="175" class="h3 ink">n-gram gate</text>
+    <text x="552" y="191" class="b ink">any pair ROUGE-L F &gt; 0.25 ?</text>
+    <use href="#warn" xlink:href="#warn" x="738" y="160" width="15" height="13"/>
+
+    <path class="flow" d="M566,198 V225" marker-end="url(#ah)"/>
+    <text x="576" y="216" class="s ink2">yes: 100/100 attacked q</text>
+    <path class="byp" d="M758,177 H786 V397"/>
+    <text x="762" y="172" class="s ink2">no</text>
+
+    <!-- b · K-means -->
+    <rect x="540" y="226" width="218" height="140" rx="6" fill="#ffffff" stroke="#8a8984" stroke-width="1.1"/>
+    <circle cx="553" cy="241" r="8" fill="#ffffff" stroke="#3d3c39" stroke-width="1.2"/>
+    <text x="553" y="245" text-anchor="middle" font-size="11" font-weight="700" class="ink">b</text>
+    <text x="567" y="245" class="h3 ink">K-means (k = 2)</text>
+    <text x="552" y="262" class="s ink">cluster dense if mean pairwise</text>
+    <text x="552" y="277" class="s ink">SimCSE cosine &gt; <tspan font-weight="700">0.88</tspan></text>
+    <!-- illustrative embedding scatter: poison = triangles (tight), clean = circles (spread) -->
+    <ellipse cx="589" cy="308" rx="25" ry="18" fill="none" stroke="#e34948" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <use href="#tri" xlink:href="#tri" x="573.5" y="299.5" width="10" height="9"/>
+    <use href="#tri" xlink:href="#tri" x="585.5" y="292.5" width="10" height="9"/>
+    <use href="#tri" xlink:href="#tri" x="595.5" y="302.5" width="10" height="9"/>
+    <use href="#tri" xlink:href="#tri" x="579.5" y="311.5" width="10" height="9"/>
+    <use href="#tri" xlink:href="#tri" x="591.5" y="313.5" width="10" height="9"/>
+    <text x="622" y="305" class="s pz" font-weight="700">dense → dropped</text>
+    <text x="622" y="320" class="s ink2">(poison cluster)</text>
+    <g fill="#1baf7a" stroke="#127552" stroke-width="0.8">
+      <circle cx="732" cy="294" r="4.5"/>
+      <circle cx="748" cy="318" r="4.5"/>
+      <circle cx="724" cy="330" r="4.5"/>
+    </g>
+    <text x="552" y="345" class="s ink">median cosine, <tspan class="pz" font-weight="700">poison pairs 0.93</tspan></text>
+    <text x="552" y="360" class="s ink">vs <tspan class="cl" font-weight="700">clean pairs 0.74–0.81</tspan></text>
+
+    <path class="flow" d="M649,366 V375" marker-end="url(#ah)"/>
+
+    <!-- c · drop -->
+    <rect x="540" y="376" width="218" height="42" rx="6" fill="#ffffff" stroke="#8a8984" stroke-width="1.1"/>
+    <circle cx="553" cy="391" r="8" fill="#ffffff" stroke="#3d3c39" stroke-width="1.2"/>
+    <text x="553" y="395" text-anchor="middle" font-size="11" font-weight="700" class="ink">c</text>
+    <text x="567" y="395" class="h3 ink">Drop dense cluster(s)</text>
+    <text x="552" y="411" class="s ink">ROUGE-L filter inside kept cluster</text>
+
+    <text x="540" y="436" class="s ink2">usual: both clusters dense → drop all</text>
+    <text x="540" y="451" class="s ink2">(65–78% of attacked questions)</text>
+
+    <!-- stage-1 outcome -->
+    <rect x="540" y="462" width="218" height="90" rx="6" fill="#fbf7f6" stroke="#e34948" stroke-width="1.1"/>
+    <text x="550" y="480" class="s ink2">Poison passages reaching the LLM</text>
+    <text x="550" y="500" class="pz" font-size="16" font-weight="700">4.65 → 0.09 / question</text>
+    <text x="550" y="517" class="s ink">98% removed · empty context for</text>
+    <text x="550" y="531" class="s ink">71–84% of attacked questions</text>
+    <text x="550" y="546" class="s ink2">Clean dropped: 0.95 of 5 (no attack)</text>
+
+    <!-- Stage 2 -->
+    <rect x="802" y="72" width="224" height="488" rx="8" fill="#ffffff" stroke="#8a8984" stroke-width="1.2"/>
+    <text x="814" y="95" class="h2 ink">Stage 2</text>
+    <text x="814" y="113" class="h3 ink">Conflict resolution</text>
+    <text x="814" y="130" class="s ink2">3 calls to the target LLM</text>
+    <text x="814" y="145" class="s ink3">reference prompts, verbatim</text>
+
+    <!-- a · internal knowledge -->
+    <rect x="814" y="156" width="200" height="62" rx="6" fill="#ffffff" stroke="#2a78d6" stroke-width="1.1"/>
+    <circle cx="827" cy="171" r="8" fill="#ffffff" stroke="#3d3c39" stroke-width="1.2"/>
+    <text x="827" y="175" text-anchor="middle" font-size="11" font-weight="700" class="ink">a</text>
+    <text x="841" y="175" class="h3 ink">Internal knowledge</text>
+    <text x="826" y="193" class="s ink">LLM answers <tspan font-style="italic">q</tspan> alone,</text>
+    <text x="826" y="208" class="s ink">&lt; 50 words, may say “I don’t know”</text>
+
+    <path class="flow" d="M838,218 V361" marker-end="url(#ah)"/>
+    <text x="848" y="243" class="s ink2" font-style="italic">internal knowledge</text>
+    <text x="848" y="276" class="s ink2">When Stage 1 keeps nothing</text>
+    <text x="848" y="291" class="s ink2">(71–84% of attacked q), the</text>
+    <text x="848" y="306" class="s ink2">answer rests on internal</text>
+    <text x="848" y="321" class="s ink2">knowledge alone.</text>
+
+    <!-- b · consolidation -->
+    <rect x="814" y="362" width="200" height="76" rx="6" fill="#ffffff" stroke="#2a78d6" stroke-width="1.1"/>
+    <circle cx="827" cy="377" r="8" fill="#ffffff" stroke="#3d3c39" stroke-width="1.2"/>
+    <text x="827" y="381" text-anchor="middle" font-size="11" font-weight="700" class="ink">b</text>
+    <text x="841" y="381" class="h3 ink">Consolidation</text>
+    <text x="826" y="399" class="s ink">merge kept passages with (a);</text>
+    <text x="826" y="414" class="s ink">drop instruction-like or</text>
+    <text x="826" y="429" class="s ink">conflicting documents</text>
+
+    <path class="flow" d="M914,438 V451" marker-end="url(#ah)"/>
+
+    <!-- c · final answer -->
+    <rect x="814" y="452" width="200" height="62" rx="6" fill="#ffffff" stroke="#2a78d6" stroke-width="1.1"/>
+    <circle cx="827" cy="467" r="8" fill="#ffffff" stroke="#3d3c39" stroke-width="1.2"/>
+    <text x="827" y="471" text-anchor="middle" font-size="11" font-weight="700" class="ink">c</text>
+    <text x="841" y="471" class="h3 ink">Final answer</text>
+    <text x="826" y="489" class="s ink">weighs (b) against own</text>
+    <text x="826" y="504" class="s ink">knowledge (a), then answers</text>
+
+    <!-- caveat (linked to the gate by the same icon) -->
+    <rect x="528" y="572" width="498" height="102" rx="6" fill="#fff8e6" stroke="#b7791f" stroke-width="1.3" stroke-dasharray="5 3"/>
+    <use href="#warn" xlink:href="#warn" x="538" y="582" width="16" height="14"/>
+    <text x="562" y="594" class="b ink"><tspan font-weight="700">Adaptive-attacker caveat.</tspan> Stage 1 fires only because the 5 poison texts per</text>
+    <text x="562" y="612" class="b ink">question are near-duplicates: all 1,000 poison pairs exceed ROUGE-L 0.25</text>
+    <text x="562" y="630" class="b ink">(median 0.49, min 0.28), and the poison-pair cosine p10 (0.88) sits exactly at the</text>
+    <text x="562" y="648" class="b ink">threshold. Diverse, non-duplicate poison was not tested and would likely pass.</text>
+    <text x="562" y="666" class="s ink2">Read as “defeats the published PoisonedRAG texts”, not as a general defense.</text>
+  </g>
+
+  <!-- ================= 5 · Target LLM → final answer ================= -->
+  <g id="llm">
+    <rect x="1058" y="156" width="126" height="358" rx="10" fill="#e1ecfa" stroke="#2a78d6" stroke-width="1.4"/>
+    <circle cx="1076" cy="176" r="10" fill="#3d3c39"/>
+    <text x="1076" y="180.5" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">5</text>
+    <text x="1092" y="181" class="h2 ink">Target LLM</text>
+    <text x="1070" y="206" class="b ink">Vicuna-7B</text>
+    <text x="1070" y="222" class="b ink">Qwen3.5-27B</text>
+    <text x="1070" y="238" class="b ink">gpt-oss-120b</text>
+    <text x="1070" y="258" class="s ink2">T = 0.1 · local vLLM</text>
+    <text x="1121" y="330" text-anchor="middle" class="s ink2">serves Stage 2</text>
+    <text x="1121" y="345" text-anchor="middle" class="s ink2">calls a, b, c</text>
+
+    <path class="call" d="M1015,187 H1057" marker-start="url(#ahBlueStart)" marker-end="url(#ahBlueEnd)"/>
+    <path class="call" d="M1015,400 H1057" marker-start="url(#ahBlueStart)" marker-end="url(#ahBlueEnd)"/>
+    <path class="call" d="M1015,483 H1057" marker-start="url(#ahBlueStart)" marker-end="url(#ahBlueEnd)"/>
+
+    <path class="flow" d="M1121,514 V529" marker-end="url(#ah)"/>
+    <rect x="1058" y="530" width="126" height="30" rx="6" fill="#f0efec" stroke="#3d3c39" stroke-width="1.4"/>
+    <text x="1121" y="550" text-anchor="middle" class="ink" font-size="13.5" font-weight="700">Final answer</text>
+
+    <rect x="1058" y="572" width="126" height="116" rx="6" fill="#ffffff" stroke="#8a8984" stroke-width="1.2"/>
+    <text x="1068" y="591" class="h3 ink">Robust ASR†</text>
+    <text x="1068" y="613" class="ink" font-size="19" font-weight="700">0.85 → 0.09</text>
+    <text x="1068" y="629" class="s ink2">(mean of 3 LLMs)</text>
+    <text x="1068" y="650" class="ink" font-size="12.5" font-weight="700">Clean accuracy</text>
+    <text x="1068" y="666" class="s ink">Vicuna-7B: −0.07</text>
+    <text x="1068" y="681" class="s ink">larger LLMs: no loss</text>
+  </g>
+
+  <!-- ================= legend ================= -->
+  <g id="legend">
+    <rect x="16" y="572" width="486" height="116" rx="6" fill="#ffffff" stroke="#d6d4cf" stroke-width="1.1"/>
+    <text x="28" y="592" class="ink" font-size="12.5" font-weight="700">Legend</text>
+
+    <rect x="28" y="606" width="26" height="12" rx="2" fill="#d3efe2" stroke="#1baf7a" stroke-width="1"/>
+    <path d="M36,612 l2.5,2.5 l5,-5" fill="none" stroke="#127552" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="62" y="616.5" class="s ink">clean passage</text>
+    <rect x="28" y="631" width="26" height="12" rx="2" fill="url(#hatch)" stroke="#e34948" stroke-width="1.1"/>
+    <text x="62" y="641.5" class="s ink">poison passage</text>
+    <circle cx="34" cy="662" r="4.5" fill="#1baf7a" stroke="#127552" stroke-width="0.8"/>
+    <use href="#tri" xlink:href="#tri" x="43" y="657.5" width="10" height="9"/>
+    <text x="62" y="666.5" class="s ink">clean / poison point</text>
+
+    <rect x="190" y="605" width="24" height="14" rx="3" fill="#e1ecfa" stroke="#2a78d6" stroke-width="1.2"/>
+    <text x="222" y="616.5" class="s ink">model component</text>
+    <rect x="190" y="630" width="24" height="14" rx="3" fill="#f6f3ea" stroke="#4a4842" stroke-width="1.6"/>
+    <text x="222" y="641.5" class="s ink">TrustRAG defense</text>
+    <rect x="190" y="655" width="24" height="14" rx="3" fill="#f0efec" stroke="#8a8984" stroke-width="1.2"/>
+    <text x="222" y="666.5" class="s ink">data / process step</text>
+
+    <path class="flow" d="M352,612 H381" marker-end="url(#ah)"/>
+    <text x="390" y="616.5" class="s ink">data flow</text>
+    <path class="call" d="M352,637 H381" marker-start="url(#ahBlueStart)" marker-end="url(#ahBlueEnd)"/>
+    <text x="390" y="641.5" class="s ink">LLM call</text>
+    <path class="byp" d="M352,662 H381"/>
+    <text x="390" y="666.5" class="s ink">gate bypass (no)</text>
+  </g>
+
+  <!-- ================= connectors drawn last, so panel fills never hide them ================= -->
+  <g id="connectors">
+    <!-- retrieved top-k into Stage 1 (gate a) -->
+    <path class="flow" d="M496,320 H507 V177 H539" marker-end="url(#ah)"/>
+    <!-- Stage 1 kept passages into Stage 2 (b); the gate bypass joins at the dot -->
+    <path class="flow" d="M758,397 H813" marker-end="url(#ah)"/>
+    <circle cx="786" cy="397" r="2.2" fill="#4a4842"/>
+  </g>
+
+  <!-- ================= caption ================= -->
+  <g id="caption">
+    <text x="16" y="716" class="ink" font-size="13"><tspan font-weight="700">Figure 1.</tspan> TrustRAG as deployed in our PoisonedRAG pipeline (BEIR NQ, full 100-question protocol, top-k = 5, N = 5 poison texts per question; means over 3 retrieval setups × 3 LLMs): Stage 1 removes</text>
+    <text x="16" y="733" class="ink" font-size="13">the near-duplicate poison cluster (4.65 → 0.09 poison passages per question) and Stage 2 reconciles what remains with the LLM’s own knowledge, cutting robust ASR from 0.85 to 0.09; only Vicuna-7B</text>
+    <text x="16" y="750" class="ink" font-size="13">loses clean accuracy (−0.07).</text>
+    <text x="16" y="771" class="ink2" font-size="11.5">† Robust ASR = exact match for Vicuna-7B, answered-only for Qwen3.5-27B, typography-normalized for gpt-oss-120b (per LLM 0.85 → 0.09, 0.90 → 0.08, 0.79 → 0.09). * Contriever cells use upstream’s precomputed BEIR</text>
+    <text x="16" y="786" class="ink2" font-size="11.5">top-100 instead of FAISS (same top-k on 100/100 questions). Sources: experiments/RESULTS.md Step 5 (Tables D1–D3) and experiments/defenses/trustrag_filter_simcse_*.json.</text>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+{
+  "run": "nq_qwen3emb8b_vicuna7b_full-20261119-154702",
+  "embedder": "simcse-sup-bert",
+  "sim_threshold": 0.88,
+  "retrieved_topk": {
+    "questions": 100,
+    "poison_total": 453,
+    "poison_kept": 12,
+    "clean_total": 47,
+    "clean_removed": 12,
+    "branches": {
+      "both_dense_drop_all": 67,
+      "drop_dense_c0_ngram_c1": 11,
+      "drop_dense_c1_ngram_c0": 9,
+      "c1_singleton_drop_dense_c0": 5,
+      "c0_singleton_drop_dense_c1": 2,
+      "neither_dense_ngram_both": 2,
+      "c0_singleton_both_dense_drop_all": 2,
+      "c1_singleton_both_dense_drop_all": 1,
+      "c1_singleton_keep_c0": 1
+    },
+    "cos_poison_pairs": {
+      "n": 842,
+      "median": 0.9331291317939758,
+      "p10": 0.8863294959068299
+    },
+    "cos_clean_pairs": {
+      "n": 30,
+      "median": 0.7845962047576904,
+      "p90": 0.8820334017276764
+    }
+  },
+  "clean_topk": {
+    "questions": 100,
+    "poison_total": 0,
+    "poison_kept": 0,
+    "clean_total": 500,
+    "clean_removed": 114,
+    "branches": {
+      "ngram_precheck_keep_all": 57,
+      "neither_dense_ngram_both": 21,
+      "drop_dense_c1_ngram_c0": 10,
+      "drop_dense_c0_ngram_c1": 10,
+      "both_dense_drop_all": 2
+    },
+    "cos_poison_pairs": {
+      "n": 0,
+      "median": null,
+      "p10": null
+    },
+    "cos_clean_pairs": {
+      "n": 1000,
+      "median": 0.7964827120304108,
+      "p90": 0.8823624014854431
+    }
+  }
+}

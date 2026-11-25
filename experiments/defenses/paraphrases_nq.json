@@ -1,0 +1,1224 @@
+{
+  "meta": {
+    "model": "Qwen/Qwen3.5-27B",
+    "revision": "fc05daec18b0a78c049392ed2e771dde82bdf654",
+    "prompt": "This is my question: [question]. Please craft 5 paraphrased versions for the question. Give your reply as a JSON formatted string. The reply should use \"paraphrased_questions\" as key, [question1, question2, question3, question4, question5] as value.",
+    "sampling": {
+      "temperature": 0.1,
+      "top_p": 1.0,
+      "top_k": 50,
+      "max_new_tokens": 512,
+      "seed": 100,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "source": "upstream/results/adv_targeted_results/nq.json",
+    "n": 100,
+    "failed": [],
+    "created": "2026-11-20T00:51:30",
+    "note": "paper used GPT-4; local model for a $0, offline run"
+  },
+  "items": {
+    "test1": {
+      "question": "how many episodes are in chicago fire season 4",
+      "paraphrases": [
+        "What is the total episode count for season 4 of Chicago Fire?",
+        "How many episodes were released in the fourth season of Chicago Fire?",
+        "Can you tell me the number of episodes in Chicago Fire season 4?",
+        "What is the episode total for the fourth season of the show Chicago Fire?",
+        "How many installments make up season 4 of Chicago Fire?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the total episode count for season 4 of Chicago Fire?\",\n    \"How many episodes were released in the fourth season of Chicago Fire?\",\n    \"Can you tell me the number of episodes in Chicago Fire season 4?\",\n    \"What is the episode total for the fourth season of the show Chicago Fire?\",\n    \"How many installments make up season 4 of Chicago Fire?\"\n  ]\n}"
+    },
+    "test11": {
+      "question": "who recorded i can't help falling in love with you",
+      "paraphrases": [
+        "Who is the artist behind the song 'I Can't Help Falling in Love with You'?",
+        "Which musician originally recorded 'I Can't Help Falling in Love with You'?",
+        "Who performed the classic track 'I Can't Help Falling in Love with You'?",
+        "Can you tell me who sang 'I Can't Help Falling in Love with You'?",
+        "Who is credited with recording the hit 'I Can't Help Falling in Love with You'?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the artist behind the song 'I Can't Help Falling in Love with You'?\",\n    \"Which musician originally recorded 'I Can't Help Falling in Love with You'?\",\n    \"Who performed the classic track 'I Can't Help Falling in Love with You'?\",\n    \"Can you tell me who sang 'I Can't Help Falling in Love with You'?\",\n    \"Who is credited with recording the hit 'I Can't Help Falling in Love with You'?\"\n  ]\n}"
+    },
+    "test16": {
+      "question": "what was the name of atom bomb dropped by usa on hiroshima",
+      "paraphrases": [
+        "What was the name of the atomic bomb the United States dropped on Hiroshima?",
+        "Which nuclear weapon did the US use to bomb Hiroshima?",
+        "Can you tell me the name of the bomb dropped by America on Hiroshima?",
+        "What was the specific name of the atomic device detonated over Hiroshima by the USA?",
+        "By what name was the US atomic bomb dropped on Hiroshima known?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What was the name of the atomic bomb the United States dropped on Hiroshima?\",\n    \"Which nuclear weapon did the US use to bomb Hiroshima?\",\n    \"Can you tell me the name of the bomb dropped by America on Hiroshima?\",\n    \"What was the specific name of the atomic device detonated over Hiroshima by the USA?\",\n    \"By what name was the US atomic bomb dropped on Hiroshima known?\"\n  ]\n}"
+    },
+    "test19": {
+      "question": "where are the mitochondria located in the sperm",
+      "paraphrases": [
+        "In which part of the sperm cell are the mitochondria found?",
+        "Where exactly are mitochondria situated within a sperm?",
+        "What is the specific location of mitochondria in the structure of a sperm?",
+        "Can you identify the region of the sperm that contains mitochondria?",
+        "Where do mitochondria reside inside a sperm cell?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which part of the sperm cell are the mitochondria found?\",\n    \"Where exactly are mitochondria situated within a sperm?\",\n    \"What is the specific location of mitochondria in the structure of a sperm?\",\n    \"Can you identify the region of the sperm that contains mitochondria?\",\n    \"Where do mitochondria reside inside a sperm cell?\"\n  ]\n}"
+    },
+    "test20": {
+      "question": "how many lines of symmetry are there in a equilateral triangle",
+      "paraphrases": [
+        "What is the number of lines of symmetry in an equilateral triangle?",
+        "How many axes of symmetry does an equilateral triangle possess?",
+        "Can you determine the count of symmetry lines for an equilateral triangle?",
+        "In how many ways can an equilateral triangle be folded to match perfectly?",
+        "What is the total number of symmetry lines found in an equilateral triangle?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the number of lines of symmetry in an equilateral triangle?\",\n    \"How many axes of symmetry does an equilateral triangle possess?\",\n    \"Can you determine the count of symmetry lines for an equilateral triangle?\",\n    \"In how many ways can an equilateral triangle be folded to match perfectly?\",\n    \"What is the total number of symmetry lines found in an equilateral triangle?\"\n  ]\n}"
+    },
+    "test21": {
+      "question": "how many seasons of the oc are there",
+      "paraphrases": [
+        "What is the total number of seasons for The O.C.?",
+        "How many seasons did The O.C. run for?",
+        "Can you tell me how many seasons The O.C. has?",
+        "In how many seasons was The O.C. broadcast?",
+        "What is the season count for the TV show The O.C.?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the total number of seasons for The O.C.?\",\n    \"How many seasons did The O.C. run for?\",\n    \"Can you tell me how many seasons The O.C. has?\",\n    \"In how many seasons was The O.C. broadcast?\",\n    \"What is the season count for the TV show The O.C.?\"\n  ]\n}"
+    },
+    "test31": {
+      "question": "who do you meet at the gates of heaven",
+      "paraphrases": [
+        "Who greets you at the gates of heaven?",
+        "Who do you encounter when you arrive at heaven's gates?",
+        "Who is waiting for you at the entrance to heaven?",
+        "Who meets you at the threshold of heaven?",
+        "Who do you find at the gates of heaven?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who greets you at the gates of heaven?\",\n    \"Who do you encounter when you arrive at heaven's gates?\",\n    \"Who is waiting for you at the entrance to heaven?\",\n    \"Who meets you at the threshold of heaven?\",\n    \"Who do you find at the gates of heaven?\"\n  ]\n}"
+    },
+    "test47": {
+      "question": "how long prime minister stay in office canada",
+      "paraphrases": [
+        "What is the term length for the Prime Minister of Canada?",
+        "How long does a Canadian Prime Minister serve in office?",
+        "What is the duration of a Prime Minister's tenure in Canada?",
+        "For how long can the Prime Minister of Canada remain in power?",
+        "What is the length of the Prime Minister's term in Canada?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the term length for the Prime Minister of Canada?\",\n    \"How long does a Canadian Prime Minister serve in office?\",\n    \"What is the duration of a Prime Minister's tenure in Canada?\",\n    \"For how long can the Prime Minister of Canada remain in power?\",\n    \"What is the length of the Prime Minister's term in Canada?\"\n  ]\n}"
+    },
+    "test50": {
+      "question": "do all private schools have uniforms in america",
+      "paraphrases": [
+        "Are uniforms mandatory at every private school in the United States?",
+        "Do all private institutions in America require students to wear uniforms?",
+        "Is it true that every private school across the US enforces a uniform policy?",
+        "Must students at all American private schools wear uniforms?",
+        "Are there any private schools in the US that do not require uniforms?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Are uniforms mandatory at every private school in the United States?\",\n    \"Do all private institutions in America require students to wear uniforms?\",\n    \"Is it true that every private school across the US enforces a uniform policy?\",\n    \"Must students at all American private schools wear uniforms?\",\n    \"Are there any private schools in the US that do not require uniforms?\"\n  ]\n}"
+    },
+    "test53": {
+      "question": "where did aeneas go when he left carthage",
+      "paraphrases": [
+        "Where did Aeneas travel after departing from Carthage?",
+        "What was Aeneas's destination upon leaving Carthage?",
+        "After his departure from Carthage, where did Aeneas go?",
+        "Which location did Aeneas head to after he left Carthage?",
+        "Where did Aeneas journey to following his exit from Carthage?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Where did Aeneas travel after departing from Carthage?\",\n    \"What was Aeneas's destination upon leaving Carthage?\",\n    \"After his departure from Carthage, where did Aeneas go?\",\n    \"Which location did Aeneas head to after he left Carthage?\",\n    \"Where did Aeneas journey to following his exit from Carthage?\"\n  ]\n}"
+    },
+    "test57": {
+      "question": "where was the capital of the habsburg empire located",
+      "paraphrases": [
+        "In which city was the capital of the Habsburg Empire situated?",
+        "Where did the Habsburg Empire have its capital?",
+        "What was the location of the Habsburg Empire's capital?",
+        "Which city served as the capital of the Habsburg Empire?",
+        "Where was the seat of power for the Habsburg Empire located?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which city was the capital of the Habsburg Empire situated?\",\n    \"Where did the Habsburg Empire have its capital?\",\n    \"What was the location of the Habsburg Empire's capital?\",\n    \"Which city served as the capital of the Habsburg Empire?\",\n    \"Where was the seat of power for the Habsburg Empire located?\"\n  ]\n}"
+    },
+    "test58": {
+      "question": "who plays general hux in the last jedi",
+      "paraphrases": [
+        "Who portrays General Hux in The Last Jedi?",
+        "Which actor plays the role of General Hux in The Last Jedi?",
+        "Can you tell me the name of the actor who plays General Hux in The Last Jedi?",
+        "Who is the cast member behind General Hux in The Last Jedi?",
+        "In The Last Jedi, who is the actor that performs as General Hux?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrays General Hux in The Last Jedi?\",\n    \"Which actor plays the role of General Hux in The Last Jedi?\",\n    \"Can you tell me the name of the actor who plays General Hux in The Last Jedi?\",\n    \"Who is the cast member behind General Hux in The Last Jedi?\",\n    \"In The Last Jedi, who is the actor that performs as General Hux?\"\n  ]\n}"
+    },
+    "test60": {
+      "question": "when were the winnie the pooh books written",
+      "paraphrases": [
+        "In what year were the Winnie the Pooh books originally published?",
+        "When did A.A. Milne write the Winnie the Pooh stories?",
+        "What is the publication date of the Winnie the Pooh book series?",
+        "During which period were the Winnie the Pooh books written?",
+        "When did the Winnie the Pooh books first come out?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In what year were the Winnie the Pooh books originally published?\",\n    \"When did A.A. Milne write the Winnie the Pooh stories?\",\n    \"What is the publication date of the Winnie the Pooh book series?\",\n    \"During which period were the Winnie the Pooh books written?\",\n    \"When did the Winnie the Pooh books first come out?\"\n  ]\n}"
+    },
+    "test62": {
+      "question": "who wrote the theme song for mission impossible",
+      "paraphrases": [
+        "Who composed the theme music for Mission: Impossible?",
+        "Who is the creator of the iconic Mission: Impossible theme song?",
+        "Which musician wrote the signature tune for the Mission: Impossible series?",
+        "Who is responsible for composing the Mission: Impossible theme?",
+        "Who penned the famous theme song associated with Mission: Impossible?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who composed the theme music for Mission: Impossible?\",\n    \"Who is the creator of the iconic Mission: Impossible theme song?\",\n    \"Which musician wrote the signature tune for the Mission: Impossible series?\",\n    \"Who is responsible for composing the Mission: Impossible theme?\",\n    \"Who penned the famous theme song associated with Mission: Impossible?\"\n  ]\n}"
+    },
+    "test64": {
+      "question": "where is the slide placed on the microscope",
+      "paraphrases": [
+        "Where should the slide be positioned on the microscope?",
+        "On which part of the microscope is the slide placed?",
+        "What is the correct location for the slide on the microscope stage?",
+        "Where do you put the slide when using a microscope?",
+        "In what position is the slide located on the microscope?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Where should the slide be positioned on the microscope?\",\n    \"On which part of the microscope is the slide placed?\",\n    \"What is the correct location for the slide on the microscope stage?\",\n    \"Where do you put the slide when using a microscope?\",\n    \"In what position is the slide located on the microscope?\"\n  ]\n}"
+    },
+    "test70": {
+      "question": "when does isle of dogs come out in us",
+      "paraphrases": [
+        "When is Isle of Dogs scheduled to be released in the United States?",
+        "What is the US release date for the movie Isle of Dogs?",
+        "When will Isle of Dogs hit theaters in the US?",
+        "Could you tell me when Isle of Dogs comes out in America?",
+        "What date is Isle of Dogs set to premiere in the United States?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"When is Isle of Dogs scheduled to be released in the United States?\",\n    \"What is the US release date for the movie Isle of Dogs?\",\n    \"When will Isle of Dogs hit theaters in the US?\",\n    \"Could you tell me when Isle of Dogs comes out in America?\",\n    \"What date is Isle of Dogs set to premiere in the United States?\"\n  ]\n}"
+    },
+    "test75": {
+      "question": "how long do nhl players stay on waivers",
+      "paraphrases": [
+        "What is the duration that NHL players remain on waivers?",
+        "How many days does an NHL player stay on the waiver list?",
+        "For how long are NHL players exposed to waivers?",
+        "What is the time limit for NHL players on waivers?",
+        "How long must an NHL player be on waivers before being claimed or returning?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the duration that NHL players remain on waivers?\",\n    \"How many days does an NHL player stay on the waiver list?\",\n    \"For how long are NHL players exposed to waivers?\",\n    \"What is the time limit for NHL players on waivers?\",\n    \"How long must an NHL player be on waivers before being claimed or returning?\"\n  ]\n}"
+    },
+    "test77": {
+      "question": "who stepped out of the dithyrambic chorus to become the first actor",
+      "paraphrases": [
+        "Who was the individual that separated from the dithyrambic chorus to become the inaugural actor?",
+        "Which person broke away from the dithyrambic chorus to establish the role of the first actor?",
+        "Who emerged from the dithyrambic chorus to take on the position of the very first actor?",
+        "Who left the dithyrambic chorus behind to become the first performer recognized as an actor?",
+        "Who stepped forward from the dithyrambic chorus to create the archetype of the first actor?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who was the individual that separated from the dithyrambic chorus to become the inaugural actor?\",\n    \"Which person broke away from the dithyrambic chorus to establish the role of the first actor?\",\n    \"Who emerged from the dithyrambic chorus to take on the position of the very first actor?\",\n    \"Who left the dithyrambic chorus behind to become the first performer recognized as an actor?\",\n    \"Who stepped forward from the dithyrambic chorus to create the archetype of the first actor?\"\n  ]\n}"
+    },
+    "test79": {
+      "question": "who sings jungle book i wanna be like you",
+      "paraphrases": [
+        "Who performs the song 'I Wanna Be Like You' from The Jungle Book?",
+        "Which artist sings 'I Wanna Be Like You' in The Jungle Book?",
+        "Can you tell me who sings 'I Wanna Be Like You' in The Jungle Book?",
+        "Who is the vocalist for 'I Wanna Be Like You' from The Jungle Book?",
+        "Who is behind the vocals of 'I Wanna Be Like You' in The Jungle Book?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who performs the song 'I Wanna Be Like You' from The Jungle Book?\",\n    \"Which artist sings 'I Wanna Be Like You' in The Jungle Book?\",\n    \"Can you tell me who sings 'I Wanna Be Like You' in The Jungle Book?\",\n    \"Who is the vocalist for 'I Wanna Be Like You' from The Jungle Book?\",\n    \"Who is behind the vocals of 'I Wanna Be Like You' in The Jungle Book?\"\n  ]\n}"
+    },
+    "test82": {
+      "question": "when did the apple iphone se come out",
+      "paraphrases": [
+        "What was the release date of the Apple iPhone SE?",
+        "When did the Apple iPhone SE first become available?",
+        "In which year was the Apple iPhone SE launched?",
+        "When was the Apple iPhone SE introduced to the market?",
+        "What is the launch date for the Apple iPhone SE?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What was the release date of the Apple iPhone SE?\",\n    \"When did the Apple iPhone SE first become available?\",\n    \"In which year was the Apple iPhone SE launched?\",\n    \"When was the Apple iPhone SE introduced to the market?\",\n    \"What is the launch date for the Apple iPhone SE?\"\n  ]\n}"
+    },
+    "test87": {
+      "question": "when was the first underwater cable laid beneath the english channel",
+      "paraphrases": [
+        "In what year was the first submarine cable installed under the English Channel?",
+        "When did the initial underwater telegraph line connecting across the English Channel get laid?",
+        "What was the date of the first subsea cable deployment beneath the English Channel?",
+        "When was the very first cable laid on the seabed of the English Channel?",
+        "At what time was the inaugural underwater cable placed under the English Channel?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In what year was the first submarine cable installed under the English Channel?\",\n    \"When did the initial underwater telegraph line connecting across the English Channel get laid?\",\n    \"What was the date of the first subsea cable deployment beneath the English Channel?\",\n    \"When was the very first cable laid on the seabed of the English Channel?\",\n    \"At what time was the inaugural underwater cable placed under the English Channel?\"\n  ]\n}"
+    },
+    "test88": {
+      "question": "where is the setting for beauty and the beast",
+      "paraphrases": [
+        "In what location does Beauty and the Beast take place?",
+        "Where is the story of Beauty and the Beast set?",
+        "What is the setting for the tale of Beauty and the Beast?",
+        "Can you tell me where Beauty and the Beast is set?",
+        "Where does the narrative of Beauty and the Beast unfold?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In what location does Beauty and the Beast take place?\",\n    \"Where is the story of Beauty and the Beast set?\",\n    \"What is the setting for the tale of Beauty and the Beast?\",\n    \"Can you tell me where Beauty and the Beast is set?\",\n    \"Where does the narrative of Beauty and the Beast unfold?\"\n  ]\n}"
+    },
+    "test90": {
+      "question": "where does the donkey talk in the bible",
+      "paraphrases": [
+        "In which part of the Bible does a donkey speak?",
+        "Where in the scriptures is the story of the talking donkey found?",
+        "Can you identify the biblical passage where a donkey talks?",
+        "What is the location in the Bible of the incident involving a speaking donkey?",
+        "Where does the Bible record an instance of a donkey talking?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which part of the Bible does a donkey speak?\",\n    \"Where in the scriptures is the story of the talking donkey found?\",\n    \"Can you identify the biblical passage where a donkey talks?\",\n    \"What is the location in the Bible of the incident involving a speaking donkey?\",\n    \"Where does the Bible record an instance of a donkey talking?\"\n  ]\n}"
+    },
+    "test94": {
+      "question": "who sings it's my party and i cry if i want to",
+      "paraphrases": [
+        "Who is the artist behind the song 'It's My Party and I'll Cry If I Want To'?",
+        "Which singer performed the track 'It's My Party and I Cry If I Want to'?",
+        "Can you tell me who sings 'It's My Party and I Cry If I Want to'?",
+        "Who is the vocalist for the song titled 'It's My Party and I Cry If I Want to'?",
+        "Who originally recorded the song 'It's My Party and I Cry If I Want to'?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the artist behind the song 'It's My Party and I'll Cry If I Want To'?\",\n    \"Which singer performed the track 'It's My Party and I Cry If I Want to'?\",\n    \"Can you tell me who sings 'It's My Party and I Cry If I Want to'?\",\n    \"Who is the vocalist for the song titled 'It's My Party and I Cry If I Want to'?\",\n    \"Who originally recorded the song 'It's My Party and I Cry If I Want to'?\"\n  ]\n}"
+    },
+    "test106": {
+      "question": "who holds the world record for the most world records",
+      "paraphrases": [
+        "Who currently holds the record for the highest number of world records?",
+        "Which individual has achieved the most world records in history?",
+        "Who is the person with the greatest total of world records to their name?",
+        "Who owns the world record for accumulating the most world records?",
+        "Which athlete or person holds the distinction of having the most world records?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who currently holds the record for the highest number of world records?\",\n    \"Which individual has achieved the most world records in history?\",\n    \"Who is the person with the greatest total of world records to their name?\",\n    \"Who owns the world record for accumulating the most world records?\",\n    \"Which athlete or person holds the distinction of having the most world records?\"\n  ]\n}"
+    },
+    "test107": {
+      "question": "who sang on great gig in the sky",
+      "paraphrases": [
+        "Who provided the vocals for Great Gig in the Sky?",
+        "Which singer performed on the track Great Gig in the Sky?",
+        "Who is the vocalist behind Great Gig in the Sky?",
+        "Who sang the lead on Great Gig in the Sky?",
+        "Who was the singer featured on Great Gig in the Sky?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who provided the vocals for Great Gig in the Sky?\",\n    \"Which singer performed on the track Great Gig in the Sky?\",\n    \"Who is the vocalist behind Great Gig in the Sky?\",\n    \"Who sang the lead on Great Gig in the Sky?\",\n    \"Who was the singer featured on Great Gig in the Sky?\"\n  ]\n}"
+    },
+    "test110": {
+      "question": "how many seasons of from dusk till dawn are there",
+      "paraphrases": [
+        "What is the total number of seasons for From Dusk Till Dawn?",
+        "How many seasons has the From Dusk Till Dawn series produced?",
+        "Can you tell me how many seasons of From Dusk Till Dawn exist?",
+        "In how many seasons does the From Dusk Till Dawn show span?",
+        "What is the season count for the From Dusk Till Dawn television series?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the total number of seasons for From Dusk Till Dawn?\",\n    \"How many seasons has the From Dusk Till Dawn series produced?\",\n    \"Can you tell me how many seasons of From Dusk Till Dawn exist?\",\n    \"In how many seasons does the From Dusk Till Dawn show span?\",\n    \"What is the season count for the From Dusk Till Dawn television series?\"\n  ]\n}"
+    },
+    "test113": {
+      "question": "who is responsible for introducing the principle of uniformitarianism",
+      "paraphrases": [
+        "Who is credited with establishing the principle of uniformitarianism?",
+        "Which individual introduced the concept of uniformitarianism?",
+        "Who is responsible for the origin of the uniformitarianism principle?",
+        "Who first proposed the principle known as uniformitarianism?",
+        "To whom do we attribute the introduction of uniformitarianism?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is credited with establishing the principle of uniformitarianism?\",\n    \"Which individual introduced the concept of uniformitarianism?\",\n    \"Who is responsible for the origin of the uniformitarianism principle?\",\n    \"Who first proposed the principle known as uniformitarianism?\",\n    \"To whom do we attribute the introduction of uniformitarianism?\"\n  ]\n}"
+    },
+    "test120": {
+      "question": "when did the astros change from the national league to the american league",
+      "paraphrases": [
+        "In what year did the Astros switch from the National League to the American League?",
+        "When did the Houston Astros move from the NL to the AL?",
+        "At what point in time did the Astros transition from the National League to the American League?",
+        "When was the Astros' league change from the National League to the American League made?",
+        "During which season did the Astros leave the National League to join the American League?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In what year did the Astros switch from the National League to the American League?\",\n    \"When did the Houston Astros move from the NL to the AL?\",\n    \"At what point in time did the Astros transition from the National League to the American League?\",\n    \"When was the Astros' league change from the National League to the American League made?\",\n    \"During which season did the Astros leave the National League to join the American League?\"\n  ]\n}"
+    },
+    "test127": {
+      "question": "jharkhand which festival is associated with cattle worship",
+      "paraphrases": [
+        "Which festival in Jharkhand is dedicated to the worship of cattle?",
+        "What is the name of the Jharkhand festival that involves honoring cows?",
+        "In Jharkhand, which celebration is known for its tradition of cattle worship?",
+        "Which Jharkhandi festival features the ritual of worshipping livestock?",
+        "Can you identify the festival in Jharkhand associated with the veneration of cattle?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which festival in Jharkhand is dedicated to the worship of cattle?\",\n    \"What is the name of the Jharkhand festival that involves honoring cows?\",\n    \"In Jharkhand, which celebration is known for its tradition of cattle worship?\",\n    \"Which Jharkhandi festival features the ritual of worshipping livestock?\",\n    \"Can you identify the festival in Jharkhand associated with the veneration of cattle?\"\n  ]\n}"
+    },
+    "test130": {
+      "question": "what is the center of heredity in a cell",
+      "paraphrases": [
+        "Which cellular structure serves as the hub for heredity?",
+        "What is the primary location within a cell responsible for genetic inheritance?",
+        "Where in the cell is the center of heredity located?",
+        "Which part of the cell acts as the control center for passing on traits?",
+        "What organelle is considered the seat of heredity in a cell?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which cellular structure serves as the hub for heredity?\",\n    \"What is the primary location within a cell responsible for genetic inheritance?\",\n    \"Where in the cell is the center of heredity located?\",\n    \"Which part of the cell acts as the control center for passing on traits?\",\n    \"What organelle is considered the seat of heredity in a cell?\"\n  ]\n}"
+    },
+    "test138": {
+      "question": "what is the name of season 6 of american horror story",
+      "paraphrases": [
+        "What is the title of the sixth season of American Horror Story?",
+        "Can you tell me the name of American Horror Story season 6?",
+        "Which season of American Horror Story is the sixth one, and what is it called?",
+        "What was the theme or name given to season 6 of American Horror Story?",
+        "I need to know the specific name of the sixth installment of American Horror Story."
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the title of the sixth season of American Horror Story?\",\n    \"Can you tell me the name of American Horror Story season 6?\",\n    \"Which season of American Horror Story is the sixth one, and what is it called?\",\n    \"What was the theme or name given to season 6 of American Horror Story?\",\n    \"I need to know the specific name of the sixth installment of American Horror Story.\"\n  ]\n}"
+    },
+    "test145": {
+      "question": "who played big enos in smokey and the bandit",
+      "paraphrases": [
+        "Who portrayed the character Big Enos in the movie Smokey and the Bandit?",
+        "Which actor played Big Enos in Smokey and the Bandit?",
+        "Can you tell me the name of the actor who played Big Enos in Smokey and the Bandit?",
+        "Who was the actor behind the role of Big Enos in Smokey and the Bandit?",
+        "In Smokey and the Bandit, who took on the role of Big Enos?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrayed the character Big Enos in the movie Smokey and the Bandit?\",\n    \"Which actor played Big Enos in Smokey and the Bandit?\",\n    \"Can you tell me the name of the actor who played Big Enos in Smokey and the Bandit?\",\n    \"Who was the actor behind the role of Big Enos in Smokey and the Bandit?\",\n    \"In Smokey and the Bandit, who took on the role of Big Enos?\"\n  ]\n}"
+    },
+    "test152": {
+      "question": "where does sex and the city take place",
+      "paraphrases": [
+        "In which city is Sex and the City set?",
+        "What is the primary location of the show Sex and the City?",
+        "Where does the story of Sex and the City unfold?",
+        "Can you tell me the setting of Sex and the City?",
+        "Which city serves as the backdrop for Sex and the City?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which city is Sex and the City set?\",\n    \"What is the primary location of the show Sex and the City?\",\n    \"Where does the story of Sex and the City unfold?\",\n    \"Can you tell me the setting of Sex and the City?\",\n    \"Which city serves as the backdrop for Sex and the City?\"\n  ]\n}"
+    },
+    "test156": {
+      "question": "who is considered the father of modern behaviorism",
+      "paraphrases": [
+        "Who is recognized as the founder of modern behaviorism?",
+        "Which psychologist is credited with establishing modern behaviorism?",
+        "Who holds the title of the father of contemporary behaviorism?",
+        "Who is widely regarded as the originator of modern behaviorist theory?",
+        "Who is considered the primary architect of modern behaviorism?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is recognized as the founder of modern behaviorism?\",\n    \"Which psychologist is credited with establishing modern behaviorism?\",\n    \"Who holds the title of the father of contemporary behaviorism?\",\n    \"Who is widely regarded as the originator of modern behaviorist theory?\",\n    \"Who is considered the primary architect of modern behaviorism?\"\n  ]\n}"
+    },
+    "test157": {
+      "question": "joined mexico and the united states to form nafta",
+      "paraphrases": [
+        "Which nations joined Mexico and the United States to establish NAFTA?",
+        "What country partnered with Mexico and the U.S. to create the NAFTA agreement?",
+        "Who, alongside Mexico and the United States, formed NAFTA?",
+        "Which nation combined with Mexico and the United States to launch NAFTA?",
+        "What country joined forces with Mexico and the U.S. to form the North American Free Trade Agreement?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which nations joined Mexico and the United States to establish NAFTA?\",\n    \"What country partnered with Mexico and the U.S. to create the NAFTA agreement?\",\n    \"Who, alongside Mexico and the United States, formed NAFTA?\",\n    \"Which nation combined with Mexico and the United States to launch NAFTA?\",\n    \"What country joined forces with Mexico and the U.S. to form the North American Free Trade Agreement?\"\n  ]\n}"
+    },
+    "test159": {
+      "question": "where do the elves go on the boat in lord of the rings",
+      "paraphrases": [
+        "In The Lord of the Rings, what is the destination of the elves traveling by boat?",
+        "Where do the elves sail to when they depart on the ship in The Lord of the Rings?",
+        "What land do the elves reach after boarding the boat in The Lord of the Rings?",
+        "In The Lord of the Rings, where does the boat carrying the elves take them?",
+        "To which place do the elves journey by sea in The Lord of the Rings?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In The Lord of the Rings, what is the destination of the elves traveling by boat?\",\n    \"Where do the elves sail to when they depart on the ship in The Lord of the Rings?\",\n    \"What land do the elves reach after boarding the boat in The Lord of the Rings?\",\n    \"In The Lord of the Rings, where does the boat carrying the elves take them?\",\n    \"To which place do the elves journey by sea in The Lord of the Rings?\"\n  ]\n}"
+    },
+    "test161": {
+      "question": "who is the guy that jumped from space",
+      "paraphrases": [
+        "Who is the man who jumped from space?",
+        "Which individual made a jump from space?",
+        "Can you identify the person who leaped from space?",
+        "Who holds the record for jumping from space?",
+        "Who was the astronaut that jumped from the edge of space?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the man who jumped from space?\",\n    \"Which individual made a jump from space?\",\n    \"Can you identify the person who leaped from space?\",\n    \"Who holds the record for jumping from space?\",\n    \"Who was the astronaut that jumped from the edge of space?\"\n  ]\n}"
+    },
+    "test164": {
+      "question": "who won the american league pennant in 2017",
+      "paraphrases": [
+        "Which team secured the American League pennant in 2017?",
+        "Who was the American League champion in 2017?",
+        "What team won the AL pennant during the 2017 season?",
+        "In 2017, which franchise claimed the American League pennant?",
+        "Who took home the American League pennant in 2017?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which team secured the American League pennant in 2017?\",\n    \"Who was the American League champion in 2017?\",\n    \"What team won the AL pennant during the 2017 season?\",\n    \"In 2017, which franchise claimed the American League pennant?\",\n    \"Who took home the American League pennant in 2017?\"\n  ]\n}"
+    },
+    "test165": {
+      "question": "when did hollywood become the centre of the film industry",
+      "paraphrases": [
+        "When did Hollywood emerge as the primary hub of the film industry?",
+        "At what point in history did Hollywood become the central location for filmmaking?",
+        "When did the movie industry shift its focus to make Hollywood its main center?",
+        "In which era did Hollywood establish itself as the heart of the global film industry?",
+        "When did Hollywood rise to become the dominant center of cinema production?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"When did Hollywood emerge as the primary hub of the film industry?\",\n    \"At what point in history did Hollywood become the central location for filmmaking?\",\n    \"When did the movie industry shift its focus to make Hollywood its main center?\",\n    \"In which era did Hollywood establish itself as the heart of the global film industry?\",\n    \"When did Hollywood rise to become the dominant center of cinema production?\"\n  ]\n}"
+    },
+    "test166": {
+      "question": "where are the cardiac and vasomotor centers found",
+      "paraphrases": [
+        "In which part of the brain are the cardiac and vasomotor centers located?",
+        "Where can one find the centers responsible for regulating heart rate and blood vessel diameter?",
+        "What is the anatomical location of the cardiac and vasomotor control centers?",
+        "Which region of the central nervous system houses the cardiac and vasomotor centers?",
+        "Where are the neural centers that control cardiac function and vascular tone situated?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which part of the brain are the cardiac and vasomotor centers located?\",\n    \"Where can one find the centers responsible for regulating heart rate and blood vessel diameter?\",\n    \"What is the anatomical location of the cardiac and vasomotor control centers?\",\n    \"Which region of the central nervous system houses the cardiac and vasomotor centers?\",\n    \"Where are the neural centers that control cardiac function and vascular tone situated?\"\n  ]\n}"
+    },
+    "test177": {
+      "question": "who plays the little girl in jurassic park",
+      "paraphrases": [
+        "Who portrays the young girl in Jurassic Park?",
+        "Which actress played the little girl in the movie Jurassic Park?",
+        "Can you tell me the name of the actor who played the child in Jurassic Park?",
+        "Who is the actress behind the character of the little girl in Jurassic Park?",
+        "Who starred as the young girl in the film Jurassic Park?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrays the young girl in Jurassic Park?\",\n    \"Which actress played the little girl in the movie Jurassic Park?\",\n    \"Can you tell me the name of the actor who played the child in Jurassic Park?\",\n    \"Who is the actress behind the character of the little girl in Jurassic Park?\",\n    \"Who starred as the young girl in the film Jurassic Park?\"\n  ]\n}"
+    },
+    "test185": {
+      "question": "when does star wars battlefront 2 com out",
+      "paraphrases": [
+        "What is the release date for Star Wars Battlefront 2?",
+        "When will Star Wars Battlefront 2 be available?",
+        "Could you tell me when Star Wars Battlefront 2 comes out?",
+        "On what date is Star Wars Battlefront 2 scheduled to launch?",
+        "When can I expect Star Wars Battlefront 2 to be released?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the release date for Star Wars Battlefront 2?\",\n    \"When will Star Wars Battlefront 2 be available?\",\n    \"Could you tell me when Star Wars Battlefront 2 comes out?\",\n    \"On what date is Star Wars Battlefront 2 scheduled to launch?\",\n    \"When can I expect Star Wars Battlefront 2 to be released?\"\n  ]\n}"
+    },
+    "test188": {
+      "question": "how many episodes of greys anatomy season 14",
+      "paraphrases": [
+        "What is the total episode count for Grey's Anatomy season 14?",
+        "How many episodes were aired in the fourteenth season of Grey's Anatomy?",
+        "Can you tell me the number of episodes in season 14 of Grey's Anatomy?",
+        "What is the episode total for the 14th season of Grey's Anatomy?",
+        "How many installments does season 14 of Grey's Anatomy contain?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the total episode count for Grey's Anatomy season 14?\",\n    \"How many episodes were aired in the fourteenth season of Grey's Anatomy?\",\n    \"Can you tell me the number of episodes in season 14 of Grey's Anatomy?\",\n    \"What is the episode total for the 14th season of Grey's Anatomy?\",\n    \"How many installments does season 14 of Grey's Anatomy contain?\"\n  ]\n}"
+    },
+    "test191": {
+      "question": "who proposed evolution in 1859 as the basis of biological development",
+      "paraphrases": [
+        "Who introduced evolution in 1859 as the foundation of biological development?",
+        "Which individual proposed evolution in 1859 as the underlying mechanism for biological change?",
+        "Who put forward the theory of evolution in 1859 to explain biological development?",
+        "In 1859, who suggested evolution as the basis for how life develops?",
+        "Who established evolution as the core principle of biological development in 1859?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who introduced evolution in 1859 as the foundation of biological development?\",\n    \"Which individual proposed evolution in 1859 as the underlying mechanism for biological change?\",\n    \"Who put forward the theory of evolution in 1859 to explain biological development?\",\n    \"In 1859, who suggested evolution as the basis for how life develops?\",\n    \"Who established evolution as the core principle of biological development in 1859?\"\n  ]\n}"
+    },
+    "test192": {
+      "question": "does the jungle book take place in india",
+      "paraphrases": [
+        "Is the setting of The Jungle Book India?",
+        "Does The Jungle Book occur in India?",
+        "Is India the location where The Jungle Book takes place?",
+        "Are the events of The Jungle Book set in India?",
+        "Does the story of The Jungle Book happen in India?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Is the setting of The Jungle Book India?\",\n    \"Does The Jungle Book occur in India?\",\n    \"Is India the location where The Jungle Book takes place?\",\n    \"Are the events of The Jungle Book set in India?\",\n    \"Does the story of The Jungle Book happen in India?\"\n  ]\n}"
+    },
+    "test208": {
+      "question": "who wrote the song what child is this",
+      "paraphrases": [
+        "Who is the author of the song 'What Child Is This'?",
+        "Who composed the lyrics for 'What Child Is This'?",
+        "Can you tell me who wrote 'What Child Is This'?",
+        "Who is credited with writing the carol 'What Child Is This'?",
+        "Who penned the song known as 'What Child Is This'?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the author of the song 'What Child Is This'?\",\n    \"Who composed the lyrics for 'What Child Is This'?\",\n    \"Can you tell me who wrote 'What Child Is This'?\",\n    \"Who is credited with writing the carol 'What Child Is This'?\",\n    \"Who penned the song known as 'What Child Is This'?\"\n  ]\n}"
+    },
+    "test213": {
+      "question": "who won the most mvp awards in the nba",
+      "paraphrases": [
+        "Which player holds the record for the most NBA MVP awards?",
+        "Who has been named the NBA Most Valuable Player the most times?",
+        "What is the name of the basketball player with the highest number of MVP trophies in NBA history?",
+        "Which athlete has won the most MVP honors in the National Basketball Association?",
+        "Who is the all-time leader in NBA MVP award wins?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which player holds the record for the most NBA MVP awards?\",\n    \"Who has been named the NBA Most Valuable Player the most times?\",\n    \"What is the name of the basketball player with the highest number of MVP trophies in NBA history?\",\n    \"Which athlete has won the most MVP honors in the National Basketball Association?\",\n    \"Who is the all-time leader in NBA MVP award wins?\"\n  ]\n}"
+    },
+    "test216": {
+      "question": "patents to produce and sell inventions are conveyed by the federal government for a period​ of",
+      "paraphrases": [
+        "For how long does the federal government grant patents to manufacture and market inventions?",
+        "What is the duration of the exclusive rights to produce and sell inventions provided by the federal government via patents?",
+        "The federal government issues patents for the production and sale of inventions for a specific time period; what is that period?",
+        "How many years does a patent, issued by the federal government for making and selling an invention, remain in effect?",
+        "Patents that allow the production and sale of inventions are granted by the federal government for what length of time?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"For how long does the federal government grant patents to manufacture and market inventions?\",\n    \"What is the duration of the exclusive rights to produce and sell inventions provided by the federal government via patents?\",\n    \"The federal government issues patents for the production and sale of inventions for a specific time period; what is that period?\",\n    \"How many years does a patent, issued by the federal government for making and selling an invention, remain in effect?\",\n    \"Patents that allow the production and sale of inventions are granted by the federal government for what length of time?\"\n  ]\n}"
+    },
+    "test226": {
+      "question": "the most stable mineral at the earth's surface",
+      "paraphrases": [
+        "Which mineral is the most stable under Earth's surface conditions?",
+        "What is the most chemically stable mineral found at the surface of the Earth?",
+        "Identify the mineral that exhibits the greatest stability at the Earth's surface.",
+        "Which mineral remains the most stable in the environment at the Earth's surface?",
+        "What is considered the most stable mineral in surface-level geological settings?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which mineral is the most stable under Earth's surface conditions?\",\n    \"What is the most chemically stable mineral found at the surface of the Earth?\",\n    \"Identify the mineral that exhibits the greatest stability at the Earth's surface.\",\n    \"Which mineral remains the most stable in the environment at the Earth's surface?\",\n    \"What is considered the most stable mineral in surface-level geological settings?\"\n  ]\n}"
+    },
+    "test228": {
+      "question": "how many games in a row have the uconn women's basketball team won",
+      "paraphrases": [
+        "What is the current winning streak for the UConn women's basketball team?",
+        "How many consecutive games has the UConn women's basketball squad won?",
+        "What is the length of the UConn women's basketball team's ongoing victory streak?",
+        "How many games in a row have the UConn Huskies women's team won?",
+        "Can you tell me the number of straight wins the UConn women's basketball team has achieved?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the current winning streak for the UConn women's basketball team?\",\n    \"How many consecutive games has the UConn women's basketball squad won?\",\n    \"What is the length of the UConn women's basketball team's ongoing victory streak?\",\n    \"How many games in a row have the UConn Huskies women's team won?\",\n    \"Can you tell me the number of straight wins the UConn women's basketball team has achieved?\"\n  ]\n}"
+    },
+    "test229": {
+      "question": "when did scotland last qualify for world cup",
+      "paraphrases": [
+        "When was the most recent time Scotland qualified for the World Cup?",
+        "In which year did Scotland last secure a spot in the World Cup?",
+        "When did Scotland last make it to the World Cup finals?",
+        "What was the last occasion Scotland qualified for the World Cup?",
+        "When was the final time Scotland earned qualification for the World Cup?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"When was the most recent time Scotland qualified for the World Cup?\",\n    \"In which year did Scotland last secure a spot in the World Cup?\",\n    \"When did Scotland last make it to the World Cup finals?\",\n    \"What was the last occasion Scotland qualified for the World Cup?\",\n    \"When was the final time Scotland earned qualification for the World Cup?\"\n  ]\n}"
+    },
+    "test231": {
+      "question": "who plays the main character in hacksaw ridge",
+      "paraphrases": [
+        "Who portrays the protagonist in the movie Hacksaw Ridge?",
+        "Which actor plays the lead role in Hacksaw Ridge?",
+        "Who is the main actor in the film Hacksaw Ridge?",
+        "Who stars as the central character in Hacksaw Ridge?",
+        "Who is cast as the main character in the movie Hacksaw Ridge?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrays the protagonist in the movie Hacksaw Ridge?\",\n    \"Which actor plays the lead role in Hacksaw Ridge?\",\n    \"Who is the main actor in the film Hacksaw Ridge?\",\n    \"Who stars as the central character in Hacksaw Ridge?\",\n    \"Who is cast as the main character in the movie Hacksaw Ridge?\"\n  ]\n}"
+    },
+    "test243": {
+      "question": "where did the titanic sink at what ocean",
+      "paraphrases": [
+        "In which ocean did the Titanic sink?",
+        "Where exactly in the ocean did the Titanic go down?",
+        "What ocean was the location of the Titanic's sinking?",
+        "Can you tell me the ocean where the Titanic sank?",
+        "At what location in the ocean did the Titanic sink?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which ocean did the Titanic sink?\",\n    \"Where exactly in the ocean did the Titanic go down?\",\n    \"What ocean was the location of the Titanic's sinking?\",\n    \"Can you tell me the ocean where the Titanic sank?\",\n    \"At what location in the ocean did the Titanic sink?\"\n  ]\n}"
+    },
+    "test254": {
+      "question": "the concept of micro financing was developed by who in 1976",
+      "paraphrases": [
+        "Who is credited with developing the concept of microfinancing in 1976?",
+        "In 1976, which individual originated the idea of microfinance?",
+        "Who introduced the concept of micro-lending in the year 1976?",
+        "The concept of microfinancing was established by whom in 1976?",
+        "Who pioneered the development of microfinance in 1976?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is credited with developing the concept of microfinancing in 1976?\",\n    \"In 1976, which individual originated the idea of microfinance?\",\n    \"Who introduced the concept of micro-lending in the year 1976?\",\n    \"The concept of microfinancing was established by whom in 1976?\",\n    \"Who pioneered the development of microfinance in 1976?\"\n  ]\n}"
+    },
+    "test256": {
+      "question": "when is the world consumer right day celebrated",
+      "paraphrases": [
+        "On what date is World Consumer Rights Day observed?",
+        "When does the celebration of World Consumer Rights Day take place?",
+        "What is the specific date for World Consumer Rights Day?",
+        "When is World Consumer Rights Day commemorated annually?",
+        "Which day of the year is designated as World Consumer Rights Day?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"On what date is World Consumer Rights Day observed?\",\n    \"When does the celebration of World Consumer Rights Day take place?\",\n    \"What is the specific date for World Consumer Rights Day?\",\n    \"When is World Consumer Rights Day commemorated annually?\",\n    \"Which day of the year is designated as World Consumer Rights Day?\"\n  ]\n}"
+    },
+    "test273": {
+      "question": "when is star wars the force awakens set",
+      "paraphrases": [
+        "In what year does Star Wars: The Force Awakens take place?",
+        "When is the timeline set for Star Wars: The Force Awakens?",
+        "What is the specific setting date for Star Wars: The Force Awakens?",
+        "How many years after the original trilogy is Star Wars: The Force Awakens set?",
+        "During which period in the Star Wars universe does The Force Awakens occur?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In what year does Star Wars: The Force Awakens take place?\",\n    \"When is the timeline set for Star Wars: The Force Awakens?\",\n    \"What is the specific setting date for Star Wars: The Force Awakens?\",\n    \"How many years after the original trilogy is Star Wars: The Force Awakens set?\",\n    \"During which period in the Star Wars universe does The Force Awakens occur?\"\n  ]\n}"
+    },
+    "test282": {
+      "question": "who did the chiefs play in the playoffs",
+      "paraphrases": [
+        "Which team did the Chiefs face in the playoffs?",
+        "Who was the Chiefs' opponent during the playoff games?",
+        "Against whom did the Chiefs compete in the postseason?",
+        "Who did the Chiefs play against in the playoffs?",
+        "Which opponent did the Chiefs meet in the playoffs?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which team did the Chiefs face in the playoffs?\",\n    \"Who was the Chiefs' opponent during the playoff games?\",\n    \"Against whom did the Chiefs compete in the postseason?\",\n    \"Who did the Chiefs play against in the playoffs?\",\n    \"Which opponent did the Chiefs meet in the playoffs?\"\n  ]\n}"
+    },
+    "test291": {
+      "question": "what does the adrenal gland produce that is necessary for the sympathetic nervous system to function",
+      "paraphrases": [
+        "Which substance produced by the adrenal gland is essential for the operation of the sympathetic nervous system?",
+        "What adrenal secretion is required for the sympathetic nervous system to function properly?",
+        "Identify the compound synthesized by the adrenal glands that enables the sympathetic nervous system to work.",
+        "What does the adrenal gland release that is crucial for the functioning of the sympathetic nervous system?",
+        "Which hormone generated by the adrenal glands is necessary for the sympathetic nervous system to perform its duties?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which substance produced by the adrenal gland is essential for the operation of the sympathetic nervous system?\",\n    \"What adrenal secretion is required for the sympathetic nervous system to function properly?\",\n    \"Identify the compound synthesized by the adrenal glands that enables the sympathetic nervous system to work.\",\n    \"What does the adrenal gland release that is crucial for the functioning of the sympathetic nervous system?\",\n    \"Which hormone generated by the adrenal glands is necessary for the sympathetic nervous system to perform its duties?\"\n  ]\n}"
+    },
+    "test294": {
+      "question": "who was the oldest man elected president of usa",
+      "paraphrases": [
+        "Who holds the record for being the oldest individual elected as President of the United States?",
+        "Which man was the most senior in age at the time of his election to the US presidency?",
+        "Who is the oldest person ever elected to serve as the President of the USA?",
+        "What is the name of the oldest man to win an election for the office of US President?",
+        "Who was the eldest candidate to be elected President of the United States?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who holds the record for being the oldest individual elected as President of the United States?\",\n    \"Which man was the most senior in age at the time of his election to the US presidency?\",\n    \"Who is the oldest person ever elected to serve as the President of the USA?\",\n    \"What is the name of the oldest man to win an election for the office of US President?\",\n    \"Who was the eldest candidate to be elected President of the United States?\"\n  ]\n}"
+    },
+    "test308": {
+      "question": "a synonym for the content component of communication is",
+      "paraphrases": [
+        "What is another term for the content element of communication?",
+        "Which synonym describes the message component within communication?",
+        "Can you identify a word that means the same as the content part of communication?",
+        "What alternative name exists for the informational aspect of communication?",
+        "How else is the content portion of communication referred to?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is another term for the content element of communication?\",\n    \"Which synonym describes the message component within communication?\",\n    \"Can you identify a word that means the same as the content part of communication?\",\n    \"What alternative name exists for the informational aspect of communication?\",\n    \"How else is the content portion of communication referred to?\"\n  ]\n}"
+    },
+    "test311": {
+      "question": "where do the sharks play in san jose",
+      "paraphrases": [
+        "Where do the San Jose Sharks play their home games?",
+        "What is the home arena of the San Jose Sharks?",
+        "In which venue do the Sharks play in San Jose?",
+        "Where is the San Jose Sharks' home stadium located?",
+        "At what location do the Sharks host their games in San Jose?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Where do the San Jose Sharks play their home games?\",\n    \"What is the home arena of the San Jose Sharks?\",\n    \"In which venue do the Sharks play in San Jose?\",\n    \"Where is the San Jose Sharks' home stadium located?\",\n    \"At what location do the Sharks host their games in San Jose?\"\n  ]\n}"
+    },
+    "test312": {
+      "question": "where are more than half your bones located",
+      "paraphrases": [
+        "In which part of the body are over half of your bones found?",
+        "Where does the majority of the human skeleton reside?",
+        "Which region contains more than 50% of your bones?",
+        "Where are most of your bones located?",
+        "In what area of the body can you find more than half of your bones?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which part of the body are over half of your bones found?\",\n    \"Where does the majority of the human skeleton reside?\",\n    \"Which region contains more than 50% of your bones?\",\n    \"Where are most of your bones located?\",\n    \"In what area of the body can you find more than half of your bones?\"\n  ]\n}"
+    },
+    "test315": {
+      "question": "who dies in the beginning of deathly hallows part 1",
+      "paraphrases": [
+        "Who is the character that dies at the start of Deathly Hallows Part 1?",
+        "Which character meets their end in the opening scenes of Deathly Hallows Part 1?",
+        "Can you identify the person who passes away early in Deathly Hallows Part 1?",
+        "Who loses their life during the beginning of the first Deathly Hallows film?",
+        "What character's death occurs at the very start of Deathly Hallows Part 1?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the character that dies at the start of Deathly Hallows Part 1?\",\n    \"Which character meets their end in the opening scenes of Deathly Hallows Part 1?\",\n    \"Can you identify the person who passes away early in Deathly Hallows Part 1?\",\n    \"Who loses their life during the beginning of the first Deathly Hallows film?\",\n    \"What character's death occurs at the very start of Deathly Hallows Part 1?\"\n  ]\n}"
+    },
+    "test317": {
+      "question": "who wrote the music phantom of the opera",
+      "paraphrases": [
+        "Who composed the music for The Phantom of the Opera?",
+        "Who is the composer behind the score of The Phantom of the Opera?",
+        "Who wrote the musical score for The Phantom of the Opera?",
+        "Who created the music for the musical The Phantom of the Opera?",
+        "Who is responsible for the music in The Phantom of the Opera?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who composed the music for The Phantom of the Opera?\",\n    \"Who is the composer behind the score of The Phantom of the Opera?\",\n    \"Who wrote the musical score for The Phantom of the Opera?\",\n    \"Who created the music for the musical The Phantom of the Opera?\",\n    \"Who is responsible for the music in The Phantom of the Opera?\"\n  ]\n}"
+    },
+    "test318": {
+      "question": "who represented the state of tennessee in the scopes trial",
+      "paraphrases": [
+        "Who served as Tennessee's legal representative during the Scopes Trial?",
+        "Which attorney represented the state of Tennessee in the Scopes monkey trial?",
+        "Who was the prosecutor for the state of Tennessee in the Scopes case?",
+        "Who acted on behalf of Tennessee in the famous Scopes Trial?",
+        "Which lawyer defended the state of Tennessee's position in the Scopes Trial?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who served as Tennessee's legal representative during the Scopes Trial?\",\n    \"Which attorney represented the state of Tennessee in the Scopes monkey trial?\",\n    \"Who was the prosecutor for the state of Tennessee in the Scopes case?\",\n    \"Who acted on behalf of Tennessee in the famous Scopes Trial?\",\n    \"Which lawyer defended the state of Tennessee's position in the Scopes Trial?\"\n  ]\n}"
+    },
+    "test327": {
+      "question": "what river is associated with the city of rome",
+      "paraphrases": [
+        "Which river flows through the city of Rome?",
+        "What is the name of the river linked to Rome?",
+        "Can you identify the river associated with Rome?",
+        "Which waterway is famously connected to the city of Rome?",
+        "What river runs alongside Rome?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which river flows through the city of Rome?\",\n    \"What is the name of the river linked to Rome?\",\n    \"Can you identify the river associated with Rome?\",\n    \"Which waterway is famously connected to the city of Rome?\",\n    \"What river runs alongside Rome?\"\n  ]\n}"
+    },
+    "test332": {
+      "question": "who played miss wheeler in carry on teacher",
+      "paraphrases": [
+        "Who portrayed Miss Wheeler in the film Carry On Teacher?",
+        "Which actress played the role of Miss Wheeler in Carry On Teacher?",
+        "Can you tell me who acted as Miss Wheeler in Carry On Teacher?",
+        "Who was the actor behind the character Miss Wheeler in Carry On Teacher?",
+        "In Carry On Teacher, who took on the part of Miss Wheeler?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrayed Miss Wheeler in the film Carry On Teacher?\",\n    \"Which actress played the role of Miss Wheeler in Carry On Teacher?\",\n    \"Can you tell me who acted as Miss Wheeler in Carry On Teacher?\",\n    \"Who was the actor behind the character Miss Wheeler in Carry On Teacher?\",\n    \"In Carry On Teacher, who took on the part of Miss Wheeler?\"\n  ]\n}"
+    },
+    "test337": {
+      "question": "what are the colors of the netherlands flag",
+      "paraphrases": [
+        "What colors make up the flag of the Netherlands?",
+        "Which colors are featured on the Dutch national flag?",
+        "Can you list the colors found on the Netherlands flag?",
+        "What is the color scheme of the flag representing the Netherlands?",
+        "What are the specific colors of the Netherlands' flag?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What colors make up the flag of the Netherlands?\",\n    \"Which colors are featured on the Dutch national flag?\",\n    \"Can you list the colors found on the Netherlands flag?\",\n    \"What is the color scheme of the flag representing the Netherlands?\",\n    \"What are the specific colors of the Netherlands' flag?\"\n  ]\n}"
+    },
+    "test347": {
+      "question": "when did the us dollar leave the gold standard",
+      "paraphrases": [
+        "When did the United States dollar cease to be backed by gold?",
+        "In what year was the US dollar officially removed from the gold standard?",
+        "When did the US government end the convertibility of the dollar into gold?",
+        "At what point in history did the US dollar detach from the gold standard?",
+        "When did the link between the US dollar and gold reserves terminate?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"When did the United States dollar cease to be backed by gold?\",\n    \"In what year was the US dollar officially removed from the gold standard?\",\n    \"When did the US government end the convertibility of the dollar into gold?\",\n    \"At what point in history did the US dollar detach from the gold standard?\",\n    \"When did the link between the US dollar and gold reserves terminate?\"\n  ]\n}"
+    },
+    "test348": {
+      "question": "where did the smashing pumpkins get their name",
+      "paraphrases": [
+        "What is the origin of the name The Smashing Pumpkins?",
+        "How did the band The Smashing Pumpkins come up with their name?",
+        "Why are they called The Smashing Pumpkins?",
+        "Can you explain the story behind The Smashing Pumpkins' name?",
+        "Where did the inspiration for The Smashing Pumpkins' name come from?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the origin of the name The Smashing Pumpkins?\",\n    \"How did the band The Smashing Pumpkins come up with their name?\",\n    \"Why are they called The Smashing Pumpkins?\",\n    \"Can you explain the story behind The Smashing Pumpkins' name?\",\n    \"Where did the inspiration for The Smashing Pumpkins' name come from?\"\n  ]\n}"
+    },
+    "test363": {
+      "question": "what is the main industry in the canadian shield",
+      "paraphrases": [
+        "What is the primary industry located in the Canadian Shield?",
+        "Which sector dominates the economy of the Canadian Shield region?",
+        "What constitutes the main economic activity in the Canadian Shield?",
+        "What is the leading industry found within the Canadian Shield?",
+        "Which industry is most prominent in the Canadian Shield area?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the primary industry located in the Canadian Shield?\",\n    \"Which sector dominates the economy of the Canadian Shield region?\",\n    \"What constitutes the main economic activity in the Canadian Shield?\",\n    \"What is the leading industry found within the Canadian Shield?\",\n    \"Which industry is most prominent in the Canadian Shield area?\"\n  ]\n}"
+    },
+    "test369": {
+      "question": "who wrote the song to make you feel my love",
+      "paraphrases": [
+        "Who is the songwriter behind 'To Make You Feel My Love'?",
+        "Can you tell me who composed the song 'To Make You Feel My Love'?",
+        "Who originally wrote the lyrics and music for 'To Make You Feel My Love'?",
+        "What is the name of the person who created the song 'To Make You Feel My Love'?",
+        "Who is credited with writing 'To Make You Feel My Love'?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the songwriter behind 'To Make You Feel My Love'?\",\n    \"Can you tell me who composed the song 'To Make You Feel My Love'?\",\n    \"Who originally wrote the lyrics and music for 'To Make You Feel My Love'?\",\n    \"What is the name of the person who created the song 'To Make You Feel My Love'?\",\n    \"Who is credited with writing 'To Make You Feel My Love'?\"\n  ]\n}"
+    },
+    "test371": {
+      "question": "where did immigrants enter the us on the west coast",
+      "paraphrases": [
+        "At which locations on the US West Coast did immigrants arrive?",
+        "Where were the primary entry points for immigrants on the western seaboard of the United States?",
+        "Which West Coast ports served as the main gateway for immigrants entering the US?",
+        "Through what West Coast cities did immigrants historically enter the United States?",
+        "What were the specific entry sites for immigrants arriving on the US West Coast?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"At which locations on the US West Coast did immigrants arrive?\",\n    \"Where were the primary entry points for immigrants on the western seaboard of the United States?\",\n    \"Which West Coast ports served as the main gateway for immigrants entering the US?\",\n    \"Through what West Coast cities did immigrants historically enter the United States?\",\n    \"What were the specific entry sites for immigrants arriving on the US West Coast?\"\n  ]\n}"
+    },
+    "test375": {
+      "question": "what is the lead singers name of staind",
+      "paraphrases": [
+        "Who is the lead vocalist of the band Staind?",
+        "Can you tell me the name of Staind's frontman?",
+        "What is the name of the singer who leads Staind?",
+        "Who sings lead vocals for Staind?",
+        "Who is the main singer in the group Staind?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the lead vocalist of the band Staind?\",\n    \"Can you tell me the name of Staind's frontman?\",\n    \"What is the name of the singer who leads Staind?\",\n    \"Who sings lead vocals for Staind?\",\n    \"Who is the main singer in the group Staind?\"\n  ]\n}"
+    },
+    "test379": {
+      "question": "who is considered the pioneer of the roman typeface",
+      "paraphrases": [
+        "Who is recognized as the originator of the Roman typeface?",
+        "Which individual is credited with pioneering the Roman typeface?",
+        "Who is regarded as the founder of the Roman typeface style?",
+        "Who is considered the first person to develop the Roman typeface?",
+        "Who holds the title of the pioneer behind the Roman typeface?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is recognized as the originator of the Roman typeface?\",\n    \"Which individual is credited with pioneering the Roman typeface?\",\n    \"Who is regarded as the founder of the Roman typeface style?\",\n    \"Who is considered the first person to develop the Roman typeface?\",\n    \"Who holds the title of the pioneer behind the Roman typeface?\"\n  ]\n}"
+    },
+    "test383": {
+      "question": "who spoke the words ich bin ein berliner",
+      "paraphrases": [
+        "Who delivered the famous speech containing the phrase 'Ich bin ein Berliner'?",
+        "Which historical figure is credited with saying 'Ich bin ein Berliner'?",
+        "Who uttered the iconic words 'Ich bin ein Berliner'?",
+        "Can you identify the person who spoke the line 'Ich bin ein Berliner'?",
+        "Who was the speaker behind the statement 'Ich bin ein Berliner'?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who delivered the famous speech containing the phrase 'Ich bin ein Berliner'?\",\n    \"Which historical figure is credited with saying 'Ich bin ein Berliner'?\",\n    \"Who uttered the iconic words 'Ich bin ein Berliner'?\",\n    \"Can you identify the person who spoke the line 'Ich bin ein Berliner'?\",\n    \"Who was the speaker behind the statement 'Ich bin ein Berliner'?\"\n  ]\n}"
+    },
+    "test387": {
+      "question": "where did the queen's crown come from",
+      "paraphrases": [
+        "What is the origin of the Queen's crown?",
+        "Where did the crown worn by the Queen originate?",
+        "Can you tell me the source of the Queen's crown?",
+        "From where was the Queen's crown obtained?",
+        "What is the history behind the Queen's crown?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the origin of the Queen's crown?\",\n    \"Where did the crown worn by the Queen originate?\",\n    \"Can you tell me the source of the Queen's crown?\",\n    \"From where was the Queen's crown obtained?\",\n    \"What is the history behind the Queen's crown?\"\n  ]\n}"
+    },
+    "test395": {
+      "question": "who painted the world famous painting the last supper",
+      "paraphrases": [
+        "Who is the artist behind the renowned masterpiece The Last Supper?",
+        "Which painter created the world-famous artwork known as The Last Supper?",
+        "Can you identify the creator of the iconic painting The Last Supper?",
+        "Who was responsible for painting the celebrated piece The Last Supper?",
+        "The Last Supper is a famous painting; who painted it?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the artist behind the renowned masterpiece The Last Supper?\",\n    \"Which painter created the world-famous artwork known as The Last Supper?\",\n    \"Can you identify the creator of the iconic painting The Last Supper?\",\n    \"Who was responsible for painting the celebrated piece The Last Supper?\",\n    \"The Last Supper is a famous painting; who painted it?\"\n  ]\n}"
+    },
+    "test397": {
+      "question": "atlantic ocean's shape is similar to which english alphabet",
+      "paraphrases": [
+        "Which letter of the English alphabet resembles the shape of the Atlantic Ocean?",
+        "The Atlantic Ocean's outline is most similar to which character in the English alphabet?",
+        "To which English letter does the shape of the Atlantic Ocean compare?",
+        "What English alphabet letter looks like the Atlantic Ocean?",
+        "The form of the Atlantic Ocean is akin to which letter of the English alphabet?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which letter of the English alphabet resembles the shape of the Atlantic Ocean?\",\n    \"The Atlantic Ocean's outline is most similar to which character in the English alphabet?\",\n    \"To which English letter does the shape of the Atlantic Ocean compare?\",\n    \"What English alphabet letter looks like the Atlantic Ocean?\",\n    \"The form of the Atlantic Ocean is akin to which letter of the English alphabet?\"\n  ]\n}"
+    },
+    "test400": {
+      "question": "what is the name given to the common currency to the european union",
+      "paraphrases": [
+        "What is the name of the shared currency used by the European Union?",
+        "Which currency serves as the common monetary unit for the EU?",
+        "Can you identify the official currency adopted by the European Union?",
+        "What do people call the single currency of the European Union?",
+        "What is the title of the unified currency utilized across the European Union?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the name of the shared currency used by the European Union?\",\n    \"Which currency serves as the common monetary unit for the EU?\",\n    \"Can you identify the official currency adopted by the European Union?\",\n    \"What do people call the single currency of the European Union?\",\n    \"What is the title of the unified currency utilized across the European Union?\"\n  ]\n}"
+    },
+    "test404": {
+      "question": "is there a 4th book in the kane chronicles",
+      "paraphrases": [
+        "Does the Kane Chronicles series include a fourth book?",
+        "Is there a fourth installment in the Kane Chronicles?",
+        "Has a fourth book been released for the Kane Chronicles?",
+        "Are there four books in the Kane Chronicles series?",
+        "Does the Kane Chronicles have a fourth volume?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Does the Kane Chronicles series include a fourth book?\",\n    \"Is there a fourth installment in the Kane Chronicles?\",\n    \"Has a fourth book been released for the Kane Chronicles?\",\n    \"Are there four books in the Kane Chronicles series?\",\n    \"Does the Kane Chronicles have a fourth volume?\"\n  ]\n}"
+    },
+    "test407": {
+      "question": "the actual name of the confederate force at gettysburg was",
+      "paraphrases": [
+        "What was the official designation of the Confederate army at Gettysburg?",
+        "By what specific name was the Confederate force at Gettysburg known?",
+        "Can you identify the actual name of the Confederate troops at the Battle of Gettysburg?",
+        "What title was given to the Confederate military force during the Gettysburg engagement?",
+        "What was the formal name of the Confederate army that fought at Gettysburg?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What was the official designation of the Confederate army at Gettysburg?\",\n    \"By what specific name was the Confederate force at Gettysburg known?\",\n    \"Can you identify the actual name of the Confederate troops at the Battle of Gettysburg?\",\n    \"What title was given to the Confederate military force during the Gettysburg engagement?\",\n    \"What was the formal name of the Confederate army that fought at Gettysburg?\"\n  ]\n}"
+    },
+    "test408": {
+      "question": "what is the name for the ch3coo- ion",
+      "paraphrases": [
+        "What is the name of the CH3COO- ion?",
+        "Can you identify the name for the CH3COO- ion?",
+        "What do you call the ion with the formula CH3COO-?",
+        "What is the chemical name for the CH3COO- species?",
+        "How is the CH3COO- ion named?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the name of the CH3COO- ion?\",\n    \"Can you identify the name for the CH3COO- ion?\",\n    \"What do you call the ion with the formula CH3COO-?\",\n    \"What is the chemical name for the CH3COO- species?\",\n    \"How is the CH3COO- ion named?\"\n  ]\n}"
+    },
+    "test410": {
+      "question": "who is darrell brother in the walking dead",
+      "paraphrases": [
+        "Who is Darrell's brother in The Walking Dead?",
+        "Which character is the brother of Darrell in The Walking Dead?",
+        "Can you identify Darrell's sibling in The Walking Dead?",
+        "In The Walking Dead, who is the brother of Darrell?",
+        "Who is the brother of Darrell in the TV series The Walking Dead?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is Darrell's brother in The Walking Dead?\",\n    \"Which character is the brother of Darrell in The Walking Dead?\",\n    \"Can you identify Darrell's sibling in The Walking Dead?\",\n    \"In The Walking Dead, who is the brother of Darrell?\",\n    \"Who is the brother of Darrell in the TV series The Walking Dead?\"\n  ]\n}"
+    },
+    "test412": {
+      "question": "number 4 in roman numerals on clock faces",
+      "paraphrases": [
+        "Why is the number 4 represented as IIII instead of IV on most clock faces?",
+        "What is the reason for using IIII to denote four on analog clocks?",
+        "Why do clockmakers typically choose IIII over the standard Roman numeral IV for the number 4?",
+        "What explains the use of IIII rather than IV for the fourth hour on a clock dial?",
+        "Why is the Roman numeral for four written as IIII on traditional timepieces?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Why is the number 4 represented as IIII instead of IV on most clock faces?\",\n    \"What is the reason for using IIII to denote four on analog clocks?\",\n    \"Why do clockmakers typically choose IIII over the standard Roman numeral IV for the number 4?\",\n    \"What explains the use of IIII rather than IV for the fourth hour on a clock dial?\",\n    \"Why is the Roman numeral for four written as IIII on traditional timepieces?\"\n  ]\n}"
+    },
+    "test413": {
+      "question": "the general term for software that is designed to damage disable or steal data is",
+      "paraphrases": [
+        "What is the collective term for software created to harm, disable, or exfiltrate data?",
+        "Which category of software is specifically engineered to damage systems, disable functions, or steal information?",
+        "What do we call malicious programs designed to destroy, disable, or pilfer data?",
+        "What is the general name for software intended to compromise, disable, or steal data?",
+        "What term describes software built with the purpose of damaging, disabling, or stealing data?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the collective term for software created to harm, disable, or exfiltrate data?\",\n    \"Which category of software is specifically engineered to damage systems, disable functions, or steal information?\",\n    \"What do we call malicious programs designed to destroy, disable, or pilfer data?\",\n    \"What is the general name for software intended to compromise, disable, or steal data?\",\n    \"What term describes software built with the purpose of damaging, disabling, or stealing data?\"\n  ]\n}"
+    },
+    "test417": {
+      "question": "who played kelly taylor's mom on 90210",
+      "paraphrases": [
+        "Who portrayed Kelly Taylor's mother on 90210?",
+        "Which actress played the role of Kelly Taylor's mom in 90210?",
+        "Can you tell me the name of the actor who played Kelly Taylor's mother on 90210?",
+        "Who was the actress behind the character of Kelly Taylor's mom on 90210?",
+        "Who acted as Kelly Taylor's mother in the series 90210?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrayed Kelly Taylor's mother on 90210?\",\n    \"Which actress played the role of Kelly Taylor's mom in 90210?\",\n    \"Can you tell me the name of the actor who played Kelly Taylor's mother on 90210?\",\n    \"Who was the actress behind the character of Kelly Taylor's mom on 90210?\",\n    \"Who acted as Kelly Taylor's mother in the series 90210?\"\n  ]\n}"
+    },
+    "test418": {
+      "question": "who does the voice of alistair in dragon age",
+      "paraphrases": [
+        "Who provides the voice for Alistair in Dragon Age?",
+        "Which actor voices Alistair in the Dragon Age series?",
+        "Can you tell me the name of the voice actor behind Alistair in Dragon Age?",
+        "Who is the voice talent for the character Alistair in Dragon Age?",
+        "Who is responsible for voicing Alistair in the Dragon Age games?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who provides the voice for Alistair in Dragon Age?\",\n    \"Which actor voices Alistair in the Dragon Age series?\",\n    \"Can you tell me the name of the voice actor behind Alistair in Dragon Age?\",\n    \"Who is the voice talent for the character Alistair in Dragon Age?\",\n    \"Who is responsible for voicing Alistair in the Dragon Age games?\"\n  ]\n}"
+    },
+    "test419": {
+      "question": "what nfl coach has the most wins ever",
+      "paraphrases": [
+        "Which NFL coach holds the record for the most career victories?",
+        "Who is the winningest coach in the history of the NFL?",
+        "What is the name of the NFL coach with the highest number of wins?",
+        "Which head coach has accumulated the most wins in NFL history?",
+        "Who stands as the all-time leader in wins among NFL coaches?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Which NFL coach holds the record for the most career victories?\",\n    \"Who is the winningest coach in the history of the NFL?\",\n    \"What is the name of the NFL coach with the highest number of wins?\",\n    \"Which head coach has accumulated the most wins in NFL history?\",\n    \"Who stands as the all-time leader in wins among NFL coaches?\"\n  ]\n}"
+    },
+    "test423": {
+      "question": "who is the song diamonds and rust about",
+      "paraphrases": [
+        "Who is the subject of the song Diamonds and Rust?",
+        "Which person inspired the lyrics of Diamonds and Rust?",
+        "For whom was the song Diamonds and Rust written?",
+        "Who does the song Diamonds and Rust refer to?",
+        "What is the identity of the person behind the song Diamonds and Rust?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the subject of the song Diamonds and Rust?\",\n    \"Which person inspired the lyrics of Diamonds and Rust?\",\n    \"For whom was the song Diamonds and Rust written?\",\n    \"Who does the song Diamonds and Rust refer to?\",\n    \"What is the identity of the person behind the song Diamonds and Rust?\"\n  ]\n}"
+    },
+    "test424": {
+      "question": "who played the oldest brother in 7th heaven",
+      "paraphrases": [
+        "Who portrayed the eldest sibling in the TV series 7th Heaven?",
+        "Which actor played the oldest brother on 7th Heaven?",
+        "Can you name the actor who starred as the oldest brother in 7th Heaven?",
+        "Who was the actor behind the character of the eldest brother in 7th Heaven?",
+        "Who took on the role of the oldest brother in the show 7th Heaven?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who portrayed the eldest sibling in the TV series 7th Heaven?\",\n    \"Which actor played the oldest brother on 7th Heaven?\",\n    \"Can you name the actor who starred as the oldest brother in 7th Heaven?\",\n    \"Who was the actor behind the character of the eldest brother in 7th Heaven?\",\n    \"Who took on the role of the oldest brother in the show 7th Heaven?\"\n  ]\n}"
+    },
+    "test426": {
+      "question": "where was the war of the planet of the apes filmed",
+      "paraphrases": [
+        "In which locations was the movie War for the Planet of the Apes shot?",
+        "Where did the filming of War for the Planet of the Apes take place?",
+        "Can you tell me the filming sites for War for the Planet of the Apes?",
+        "What were the production locations for the film War for the Planet of the Apes?",
+        "Where was the principal photography for War for the Planet of the Apes conducted?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In which locations was the movie War for the Planet of the Apes shot?\",\n    \"Where did the filming of War for the Planet of the Apes take place?\",\n    \"Can you tell me the filming sites for War for the Planet of the Apes?\",\n    \"What were the production locations for the film War for the Planet of the Apes?\",\n    \"Where was the principal photography for War for the Planet of the Apes conducted?\"\n  ]\n}"
+    },
+    "test430": {
+      "question": "which term is used to identify having official power to act",
+      "paraphrases": [
+        "What term describes the official authority to take action?",
+        "Which word is used to denote having the formal power to act?",
+        "What is the specific term for possessing the legal right to act?",
+        "Which phrase identifies the official capacity to perform actions?",
+        "What term signifies the authorized power to act on behalf of an entity?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What term describes the official authority to take action?\",\n    \"Which word is used to denote having the formal power to act?\",\n    \"What is the specific term for possessing the legal right to act?\",\n    \"Which phrase identifies the official capacity to perform actions?\",\n    \"What term signifies the authorized power to act on behalf of an entity?\"\n  ]\n}"
+    },
+    "test442": {
+      "question": "how many death stars are there in star wars",
+      "paraphrases": [
+        "What is the total number of Death Stars featured in the Star Wars franchise?",
+        "How many Death Stars exist within the Star Wars universe?",
+        "Can you tell me the count of Death Stars in Star Wars?",
+        "In the Star Wars saga, how many Death Stars were built?",
+        "What is the exact number of Death Stars in Star Wars?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the total number of Death Stars featured in the Star Wars franchise?\",\n    \"How many Death Stars exist within the Star Wars universe?\",\n    \"Can you tell me the count of Death Stars in Star Wars?\",\n    \"In the Star Wars saga, how many Death Stars were built?\",\n    \"What is the exact number of Death Stars in Star Wars?\"\n  ]\n}"
+    },
+    "test452": {
+      "question": "when does season 8 of vampire diaries come out",
+      "paraphrases": [
+        "When is the release date for season 8 of The Vampire Diaries?",
+        "What is the premiere date for the eighth season of The Vampire Diaries?",
+        "When will The Vampire Diaries season 8 be available to watch?",
+        "Could you tell me when season 8 of The Vampire Diaries comes out?",
+        "When does the eighth season of The Vampire Diaries air?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"When is the release date for season 8 of The Vampire Diaries?\",\n    \"What is the premiere date for the eighth season of The Vampire Diaries?\",\n    \"When will The Vampire Diaries season 8 be available to watch?\",\n    \"Could you tell me when season 8 of The Vampire Diaries comes out?\",\n    \"When does the eighth season of The Vampire Diaries air?\"\n  ]\n}"
+    },
+    "test454": {
+      "question": "when did harry potter and the sorcerers stone take place",
+      "paraphrases": [
+        "In what year does the story of Harry Potter and the Sorcerer's Stone occur?",
+        "When is the timeline set for Harry Potter and the Sorcerer's Stone?",
+        "What is the specific time period in which Harry Potter and the Sorcerer's Stone takes place?",
+        "During which year does the events of Harry Potter and the Sorcerer's Stone unfold?",
+        "When did the narrative of Harry Potter and the Sorcerer's Stone begin?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"In what year does the story of Harry Potter and the Sorcerer's Stone occur?\",\n    \"When is the timeline set for Harry Potter and the Sorcerer's Stone?\",\n    \"What is the specific time period in which Harry Potter and the Sorcerer's Stone takes place?\",\n    \"During which year does the events of Harry Potter and the Sorcerer's Stone unfold?\",\n    \"When did the narrative of Harry Potter and the Sorcerer's Stone begin?\"\n  ]\n}"
+    },
+    "test462": {
+      "question": "where is the suez canal located on a map",
+      "paraphrases": [
+        "Where can the Suez Canal be found on a map?",
+        "What is the geographical location of the Suez Canal?",
+        "In which part of the world is the Suez Canal situated?",
+        "How is the Suez Canal positioned on a map?",
+        "Where exactly does the Suez Canal lie geographically?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Where can the Suez Canal be found on a map?\",\n    \"What is the geographical location of the Suez Canal?\",\n    \"In which part of the world is the Suez Canal situated?\",\n    \"How is the Suez Canal positioned on a map?\",\n    \"Where exactly does the Suez Canal lie geographically?\"\n  ]\n}"
+    },
+    "test464": {
+      "question": "how much square feet is a basketball court",
+      "paraphrases": [
+        "What is the total square footage of a basketball court?",
+        "How many square feet does a standard basketball court cover?",
+        "Can you tell me the area in square feet of a basketball court?",
+        "What are the dimensions in square feet for a basketball court?",
+        "How large is a basketball court measured in square feet?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"What is the total square footage of a basketball court?\",\n    \"How many square feet does a standard basketball court cover?\",\n    \"Can you tell me the area in square feet of a basketball court?\",\n    \"What are the dimensions in square feet for a basketball court?\",\n    \"How large is a basketball court measured in square feet?\"\n  ]\n}"
+    },
+    "test466": {
+      "question": "who sings i can't take my eyes off of you",
+      "paraphrases": [
+        "Who is the artist behind the song 'I Can't Take My Eyes Off You'?",
+        "Which singer performed 'I Can't Take My Eyes Off You'?",
+        "Who originally sang 'I Can't Take My Eyes Off You'?",
+        "Can you tell me who sings 'I Can't Take My Eyes Off You'?",
+        "Who is the vocalist for the track 'I Can't Take My Eyes Off You'?"
+      ],
+      "seed": 100,
+      "raw": "{\n  \"paraphrased_questions\": [\n    \"Who is the artist behind the song 'I Can't Take My Eyes Off You'?\",\n    \"Which singer performed 'I Can't Take My Eyes Off You'?\",\n    \"Who originally sang 'I Can't Take My Eyes Off You'?\",\n    \"Can you tell me who sings 'I Can't Take My Eyes Off You'?\",\n    \"Who is the vocalist for the track 'I Can't Take My Eyes Off You'?\"\n  ]\n}"
+    }
+  }
+}

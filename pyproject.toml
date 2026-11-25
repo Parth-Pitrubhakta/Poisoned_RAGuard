@@ -1,0 +1,51 @@
+[project]
+name = "poisonedrag-modern"
+version = "0.1.0"
+description = "Defensive-research reproduction and modernization of PoisonedRAG (Zou et al., USENIX Security 2025)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = "==3.12.*"
+
+# Top-level pins verified on PyPI on 2026-11-19 (newest release >= ~2 weeks old unless noted).
+# The full transitive set is pinned in uv.lock.
+dependencies = [
+    # --- inference / modeling (torch 2.13.0 default PyPI wheel = CUDA 13.0 runtime; driver 580 supports 13.0) ---
+    "torch==2.13.0",                 # exact pin required by vllm 0.32.0
+    "vllm==0.32.0",                  # 2026-10-18; supports gpt-oss, Qwen3/3.5, Gemma 4, Llama
+    "transformers==5.19.0",          # vllm 0.32.0 requires >=5.16.1,<5.20
+    "sentence-transformers==6.2.0",  # Qwen3-Embedding / bge-m3 / rerankers
+    "faiss-cpu==1.15.1",             # IndexFlatIP exact dot product; 1 TB RAM makes CPU search fine
+    # --- config / data / tracing ---
+    "pydantic==2.14.3",
+    "pyyaml==6.0.3",
+    "jsonschema==4.26.0",
+    "pandas==3.1.1",
+    "tqdm==4.70.1",
+]
+
+[dependency-groups]
+app = [
+    "streamlit==1.67.0",
+    "plotly==7.1.0",
+    "graphviz==0.21",                # DOT builder only; rendering is client-side via st.graphviz_chart
+]
+dev = [
+    "pytest==9.2.0",
+]
+
+[tool.uv]
+default-groups = ["app", "dev"]
+# Only resolve for this machine's platform (Linux x86_64) to keep the lock small and fast.
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "prag"
+module-root = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

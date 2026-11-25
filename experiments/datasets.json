@@ -1,0 +1,26 @@
+{
+  "nq": {
+    "name": "nq",
+    "split": "test",
+    "beir_url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nq.zip",
+    "zip_sha256": "2553bf7bfbab47b1436ca00a34bce57320e18e611fd00999a2a3a1b4714be752",
+    "zip_bytes": 498307926,
+    "corpus_passages": 2681468,
+    "queries": 3452,
+    "qrels_test_pairs": 4201,
+    "qrels_test_queries": 3452,
+    "passage_words": {
+      "mean": 75.6,
+      "median": 65,
+      "sample": 26815
+    },
+    "passages_with_title_share": 1.0,
+    "target_questions": 100,
+    "adv_texts_per_target": 5,
+    "adv_text_words": {
+      "mean": 27.9,
+      "median": 28.0
+    },
+    "targets_source": "upstream/results/adv_targeted_results/nq.json (PoisonedRAG release, LM_targeted)"
+  }
+}

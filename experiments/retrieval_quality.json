@@ -1,0 +1,25 @@
+{
+  "nq": {
+    "dataset": "data/beir/nq",
+    "split": "test",
+    "n_queries": 3452,
+    "retrievers": {
+      "qwen3-emb-8b": {
+        "recall@5": 0.7581,
+        "recall@20": 0.9114,
+        "recall@100": 0.9739,
+        "ndcg@10": 0.644
+      },
+      "contriever": {
+        "recall@5": 0.2928,
+        "recall@20": 0.5313,
+        "recall@100": 0.7712,
+        "ndcg@10": 0.2538
+      }
+    },
+    "notes": {
+      "qwen3-emb-8b": "FAISS IndexFlatIP data/indexes/nq-qwen3-emb-8b",
+      "contriever": "upstream precomputed upstream/results/beir_results/nq-contriever.json"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+2026-11-20T03:57:20	1	0	1109	configs/defenses/trustrag-simcse/nq_contriever_qwen35_27b.yaml
+2026-11-20T03:58:39	2	0	1169	configs/defenses/trustrag-simcse/nq_qwen3emb8b_qwen35_27b.yaml
+2026-11-20T04:00:31	3	0	1261	configs/defenses/trustrag-simcse/nq_qwen3emb8b-rerank4b_qwen35_27b.yaml
+2026-11-20T04:02:00	1	0	281	configs/defenses/trustrag-simcse/nq_contriever_gptoss120b.yaml
+2026-11-20T04:04:28	2	0	349	configs/defenses/trustrag-simcse/nq_qwen3emb8b_gptoss120b.yaml
+2026-11-20T04:07:06	3	0	395	configs/defenses/trustrag-simcse/nq_qwen3emb8b-rerank4b_gptoss120b.yaml

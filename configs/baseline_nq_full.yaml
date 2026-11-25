@@ -1,0 +1,45 @@
+# Step 1 faithful baseline, small subset. Mirrors upstream run.py defaults except M / repeat_times.
+run_name: baseline_nq_contriever_vicuna7b_full
+seed: 12                         # upstream setup_seeds(12)
+
+dataset:
+  name: nq
+  split: test
+  beir_url: https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nq.zip   # 475 MiB
+  dir: data/beir/nq
+
+targets:
+  source: upstream/results/adv_targeted_results/nq.json   # released target Qs + 5 poison texts each
+  start_index: 0
+  num_questions: 10          # upstream M (questions per iteration)
+  iterations: 10             # upstream repeat_times -> 100 questions total
+
+retriever:
+  key: contriever
+  score_function: dot
+  mode: upstream_precomputed     # clean top-k from upstream/results/beir_results/nq-contriever.json
+  precomputed: upstream/results/beir_results/nq-contriever.json
+
+attack:
+  method: LM_targeted            # black-box; poison = question + "." + adv_text
+  adv_per_query: 5               # N
+
+rag:
+  top_k: 5
+  prompt_id: 4                   # upstream MULTIPLE_PROMPT
+
+llm:
+  key: vicuna-7b-v1.3
+  temperature: 0.1
+  do_sample: true                # upstream Vicuna.query uses do_sample=True
+  max_new_tokens: 150
+  repetition_penalty: 1.0
+  seed: 100                      # upstream vicuna7b_config.json reseeds with 100 after setup_seeds(12)
+  gpu: auto                      # pick the freest GPU; require >= 30 GB free
+  min_free_gb: 30
+
+eval:
+  asr: clean_str_substring       # upstream: clean_str(incorrect) in clean_str(response)
+  smoke_test_nonempty: true      # guard for upstream issue #1 (swallowed exceptions -> "")
+
+defense: none

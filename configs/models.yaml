@@ -1,0 +1,51 @@
+# Model registry. HF IDs and sizes verified via the Hugging Face API on 2026-11-19.
+# The exact commit `revision` is resolved and recorded in RUNLOG.md at download time.
+# Optional price fields for API models: price_in_per_mtok / price_out_per_mtok (USD). Local models cost $0.
+
+retrievers:
+  contriever:            {hf_id: facebook/contriever,          revision: 2bd46a25019aeea091fd42d1f0fd4801675cf699, kind: contriever_meanpool, dim: 768,  size_gb: 0.44, role: paper_baseline}
+  contriever-msmarco:    {hf_id: facebook/contriever-msmarco,  kind: contriever_meanpool, dim: 768,  size_gb: 0.44, role: paper_ablation}
+  qwen3-emb-0.6b:        {hf_id: Qwen/Qwen3-Embedding-0.6B,    kind: qwen3_embedding,     dim: 1024, size_gb: 1.2,  role: modern_fast}
+  qwen3-emb-8b:          {hf_id: Qwen/Qwen3-Embedding-8B,      revision: 1d8ad4ca9b3dd8059ad90a75d4983776a23d44af, kind: qwen3_embedding,     dim: 4096, size_gb: 15,   role: modern_primary}
+  bge-m3:                {hf_id: BAAI/bge-m3,                  kind: sentence_transformer, dim: 1024, size_gb: 2.3, role: modern_alt}
+  # TrustRAG's stage-1 embedder (reference main_trustrag.py): [CLS] of the last hidden layer, fp32. Not a retriever here.
+  # The repo ships only pytorch_model.bin (+ a Flax copy), so it overrides the downloader's default ignore list.
+  simcse-sup-bert:       {hf_id: princeton-nlp/sup-simcse-bert-base-uncased, revision: 2d82fab19ac3a73a20dd20333d27eb8a52d6e97f, kind: simcse_cls, dim: 768, size_gb: 0.44, role: trustrag_embedder, download_ignore: ["*.msgpack", "*.h5", "*.onnx", "*.safetensors"]}
+
+rerankers:
+  qwen3-reranker-4b:     {hf_id: Qwen/Qwen3-Reranker-4B,       revision: 22e683669bc0f0bd69640a1354a6d0aebcfeede5, size_gb: 8.1}
+  bge-reranker-v2-m3:    {hf_id: BAAI/bge-reranker-v2-m3,      size_gb: 2.3}
+
+llms:
+  vicuna-7b-v1.3:
+    hf_id: lmsys/vicuna-7b-v1.3
+    revision: 236eeeab96f0dc2e463f2bebb7bb49809279c6d6
+    engine: vllm
+    chat_format: fastchat_vicuna_v1_1   # upstream uses fastchat get_conversation_template(name)
+    dtype: float16                      # FastChat load_model on cuda
+    max_model_len: 2048                 # max_position_embeddings
+    size_gb: 13.5                       # 2 x pytorch_model-*.bin (9.977 + 3.500 GB)
+    role: original_style                # in the paper; ungated
+  qwen3.5-27b:
+    hf_id: Qwen/Qwen3.5-27B
+    revision: fc05daec18b0a78c049392ed2e771dde82bdf654
+    engine: vllm
+    chat_format: hf_chat_template
+    dtype: bfloat16
+    max_model_len: 8192
+    engine_kwargs: {limit_mm_per_prompt: {image: 0, video: 0}}   # text-only use of a VLM checkpoint
+    size_gb: 55.6
+    role: modern_dense
+  gpt-oss-120b:
+    hf_id: openai/gpt-oss-120b
+    revision: b5c939de8f754692c1647ca79fbf85e8c1e70f8a
+    engine: vllm
+    chat_format: hf_chat_template       # harmony format via the tokenizer's chat template
+    max_model_len: 8192
+    size_gb: 65.3                       # top-level MXFP4 safetensors only (original/ and metal/ not downloaded)
+    role: modern_moe_reasoning
+  # Alternatives (not downloaded unless approved)
+  qwen3-8b:          {hf_id: Qwen/Qwen3-8B,         engine: vllm, chat_format: hf_chat_template, size_gb: 16}
+  gemma-4-12b-it:    {hf_id: google/gemma-4-12B-it, engine: vllm, chat_format: hf_chat_template, size_gb: 24}
+  gemma-4-31b-it:    {hf_id: google/gemma-4-31B-it, engine: vllm, chat_format: hf_chat_template, size_gb: 63}
+  gpt-oss-120b-ollama: {ollama_tag: "gpt-oss:120b", engine: ollama, size_gb: 0, note: "already pulled; shared system service"}

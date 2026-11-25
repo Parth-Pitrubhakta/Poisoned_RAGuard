@@ -1,0 +1,28 @@
+# --- local environment and caches (large; recreated by the README's "Reproduce" steps) ---
+venv_PoisonedRAG/
+.bootstrap/
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+
+# --- data: BEIR corpus + FAISS indexes (~52 GB) ---
+data/*
+!data/.gitkeep
+
+# --- external code, fetched at pinned commits (README "Reproduce", step 1) ---
+upstream/
+third_party/
+
+# --- experiment outputs that stay local ---
+# traces.jsonl hold the benchmark poison texts (CLAUDE.md: never publish poison texts outside this repo) and are ~320 MB.
+# The dashboard falls back to experiments/trace_aggregates.json (numbers only) when they are missing.
+experiments/**/traces.jsonl
+# upstream's result format embeds the injected poison texts (Step 1 frozen runner output)
+experiments/**/upstream_format_results.json
+# run logs and queue logs contain absolute local paths and host details
+experiments/**/run.log
+experiments/defenses/queue_*.log
+experiments/defenses/paraphrases_nq.log
+experiments/**/checkpoint*/

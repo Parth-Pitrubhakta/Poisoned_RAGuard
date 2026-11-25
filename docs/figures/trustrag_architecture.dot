@@ -1,0 +1,114 @@
+// TrustRAG defense as applied in the poisonedrag-modern PoisonedRAG pipeline (NQ, Step 5).
+// Same content and palette as trustrag_architecture.svg (the primary, hand-laid-out figure); Graphviz picks the layout.
+// Render:  dot -Tsvg trustrag_architecture.dot -o trustrag_architecture.dot.svg   (or -Tpdf)
+// Numbers: experiments/RESULTS.md Step 5 (D1-D3, Limitations); experiments/defenses/trustrag_filter_simcse_*.json.
+// Colour is never the only cue: every passage node says "clean" or "poison", and poison nodes use style=diagonals.
+
+digraph TrustRAG {
+  graph [rankdir=LR, newrank=true, splines=true, nodesep=0.35, ranksep=0.45, pad=0.2,
+         fontname="Helvetica", fontsize=11, bgcolor="#ffffff", compound=true,
+         label=<<FONT POINT-SIZE="11"><B>Figure 1.</B> TrustRAG in our PoisonedRAG pipeline (BEIR NQ, full 100-question protocol, top-k = 5, N = 5 poison texts per question;<BR ALIGN="LEFT"/>means over 3 retrieval setups × 3 LLMs): Stage 1 removes the near-duplicate poison cluster (4.65 → 0.09 poison passages per question) and<BR ALIGN="LEFT"/>Stage 2 reconciles what remains with the LLM’s own knowledge; robust ASR 0.85 → 0.09; only Vicuna-7B loses clean accuracy (−0.07).<BR ALIGN="LEFT"/></FONT>>,
+         labelloc=b, labeljust=l];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10.5, penwidth=1.2,
+         color="#8a8984", fillcolor="#f0efec", fontcolor="#1f1e1c", margin="0.12,0.06"];
+  edge  [color="#4a4842", penwidth=1.2, arrowsize=0.7, fontname="Helvetica", fontsize=9.5, fontcolor="#55534e"];
+
+  // 1 · query
+  query [label=<<B>1 · Query <I>q</I></B><BR/><FONT COLOR="#55534e">NQ target question</FONT>>];
+
+  // 2 · poisoned knowledge base
+  subgraph cluster_kb {
+    label=<<B>2 · Poisoned knowledge base</B>>; style="rounded,filled"; color="#8a8984"; fillcolor="#fbfaf7";
+    clean  [shape=cylinder, style=filled, fillcolor="#e3f6ee", color="#1baf7a",
+            label=<<B><FONT COLOR="#127552">Clean corpus</FONT></B><BR/>2,681,468 NQ passages>];
+    poison [shape=box, style="filled,diagonals", fillcolor="#fde8e8", color="#e34948",
+            label=<<B><FONT COLOR="#a8302f">Injected poison</FONT></B><BR/>5 per target question (500 total)<BR/><FONT FACE="Courier">q + "." + adv_text</FONT>>];
+  }
+
+  // 3 · retriever
+  subgraph cluster_ret {
+    label=<<B>3 · Retriever</B>>; style="rounded,filled"; color="#2a78d6"; fillcolor="#f4f8fd";
+    enc    [fillcolor="#ffffff", color="#2a78d6", label=<<B>Encoder</B><BR/>Contriever (paper) or<BR/>Qwen3-Embedding-8B>];
+    index  [fillcolor="#ffffff", color="#2a78d6", label=<<B>FAISS IndexFlatIP</B><BR/>exact dot product*<BR/><FONT COLOR="#55534e">returns clean top-n</FONT>>];
+    merge  [fillcolor="#ffffff", label=<<B>Merge</B><BR/>clean top-n + all poison<BR/>scored by same encoder>];
+    rerank [fillcolor="#ffffff", color="#2a78d6", style="rounded,filled,dashed",
+            label=<+ Qwen3-Reranker-4B<BR/><FONT COLOR="#55534e">optional: top-20 → top-5</FONT>>];
+  }
+
+  topk [shape=plain, label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="2" CELLPADDING="4">
+      <TR><TD BORDER="0"><B>top-k = 5</B></TD></TR>
+      <TR><TD BGCOLOR="#fde8e8" COLOR="#e34948"><FONT COLOR="#8f2423"><B>poison</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#fde8e8" COLOR="#e34948"><FONT COLOR="#8f2423"><B>poison</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#fde8e8" COLOR="#e34948"><FONT COLOR="#8f2423"><B>poison</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#fde8e8" COLOR="#e34948"><FONT COLOR="#8f2423"><B>poison</B></FONT></TD></TR>
+      <TR><TD BGCOLOR="#fde8e8:#e3f6ee" GRADIENTANGLE="0" COLOR="#7a7873"><B>mixed</B></TD></TR>
+      <TR><TD BORDER="0"><FONT POINT-SIZE="9.5" COLOR="#55534e">mean per question</FONT><BR/><FONT COLOR="#a8302f"><B>4.65 poison</B></FONT><BR/><FONT COLOR="#127552"><B>+ 0.35 clean</B></FONT></TD></TR>
+    </TABLE>>];
+
+  // 4 · TrustRAG
+  subgraph cluster_trustrag {
+    label=<<FONT POINT-SIZE="13"><B>4 · TrustRAG defense</B></FONT>  <FONT COLOR="#55534e">Zhou et al., 2025 · HuichiZhou/TrustRAG @ 11dcea0</FONT>>;
+    style="rounded,filled"; color="#4a4842"; penwidth=2; fillcolor="#f6f3ea"; labeljust=l;
+
+    subgraph cluster_s1 {
+      label=<<B>Stage 1 · Clean retrieval (filter)</B><BR/><FONT COLOR="#55534e">re-embeds top-k with SimCSE (sup-simcse-bert-base-uncased, [CLS])</FONT>>;
+      style="rounded,filled"; color="#8a8984"; penwidth=1.2; fillcolor="#ffffff";
+      gate    [label=<<B>(a) n-gram gate</B> (!)<BR/>any pair ROUGE-L F &gt; 0.25 ?>];
+      kmeans  [fillcolor="#ffffff", label=<<B>(b) K-means (k = 2)</B><BR/>cluster dense if mean pairwise<BR/>SimCSE cosine &gt; <B>0.88</B><BR/>median cosine: <FONT COLOR="#a8302f"><B>poison pairs 0.93</B></FONT><BR/>vs <FONT COLOR="#127552"><B>clean pairs 0.74–0.81</B></FONT>>];
+      drop    [fillcolor="#ffffff", label=<<B>(c) Drop dense cluster(s)</B><BR/>ROUGE-L filter inside kept cluster<BR/><FONT COLOR="#55534e">usual: both dense → drop all (65–78% of attacked q)</FONT>>];
+      s1out   [shape=note, fillcolor="#fbf7f6", color="#e34948",
+               label=<<FONT COLOR="#55534e">Poison passages reaching the LLM</FONT><BR/><FONT POINT-SIZE="13" COLOR="#a8302f"><B>4.65 → 0.09 / question</B></FONT><BR/>98% removed · empty context for 71–84% of attacked q<BR/><FONT COLOR="#55534e">Clean dropped: 0.95 of 5 (no attack)</FONT>>];
+    }
+
+    subgraph cluster_s2 {
+      label=<<B>Stage 2 · Conflict resolution</B><BR/><FONT COLOR="#55534e">3 calls to the target LLM, reference prompts verbatim</FONT>>;
+      style="rounded,filled"; color="#8a8984"; penwidth=1.2; fillcolor="#ffffff";
+      s2a [fillcolor="#ffffff", color="#2a78d6", label=<<B>(a) Internal knowledge</B><BR/>LLM answers <I>q</I> alone,<BR/>&lt; 50 words, may say “I don’t know”>];
+      s2b [fillcolor="#ffffff", color="#2a78d6", label=<<B>(b) Consolidation</B><BR/>merge kept passages with (a);<BR/>drop instruction-like or conflicting documents>];
+      s2c [fillcolor="#ffffff", color="#2a78d6", label=<<B>(c) Final answer</B><BR/>weighs (b) against own knowledge (a)>];
+    }
+
+    caveat [shape=note, fillcolor="#fff8e6", color="#b7791f", style="filled,dashed",
+            label=<<B>(!) Adaptive-attacker caveat.</B> Stage 1 fires only because the 5 poison texts per question<BR ALIGN="LEFT"/>are near-duplicates: all 1,000 poison pairs exceed ROUGE-L 0.25 (median 0.49, min 0.28),<BR ALIGN="LEFT"/>and the poison-pair cosine p10 (0.88) sits exactly at the threshold. Diverse, non-duplicate<BR ALIGN="LEFT"/>poison was not tested and would likely pass.<BR ALIGN="LEFT"/>>];
+  }
+
+  // 5 · target LLM → answer
+  llm    [fillcolor="#e1ecfa", color="#2a78d6", penwidth=1.4,
+          label=<<B>5 · Target LLM</B><BR/>Vicuna-7B<BR/>Qwen3.5-27B<BR/>gpt-oss-120b<BR/><FONT COLOR="#55534e">T = 0.1 · local vLLM</FONT>>];
+  answer [fillcolor="#f0efec", color="#3d3c39", penwidth=1.4, label=<<B>Final answer</B>>];
+  result [shape=note, fillcolor="#ffffff",
+          label=<<B>Robust ASR†</B><BR/><FONT POINT-SIZE="14"><B>0.85 → 0.09</B></FONT><BR/><FONT COLOR="#55534e">(mean of 3 LLMs)</FONT><BR/><B>Clean accuracy</B><BR/>Vicuna-7B: −0.07<BR/>larger LLMs: no loss>];
+  notes  [shape=plaintext, style="", fontsize=9.5, fontcolor="#55534e",
+          label=<† Robust ASR = exact for Vicuna-7B, answered-only for Qwen3.5-27B, typography-normalized for gpt-oss-120b.<BR ALIGN="LEFT"/>* Contriever cells use upstream’s precomputed BEIR top-100 instead of FAISS (same top-k on 100/100 questions).<BR ALIGN="LEFT"/>>];
+
+  // data flow
+  query  -> enc;
+  clean  -> index  [taillabel="clean", labelfontcolor="#127552"];
+  poison -> merge  [taillabel="poison", labelfontcolor="#a8302f"];
+  enc    -> index -> merge;
+  merge  -> rerank [style=dashed];
+  rerank -> topk;
+  topk   -> gate;
+  gate   -> kmeans [xlabel="yes: 100/100 attacked q"];
+  gate   -> s2b    [style=dashed, xlabel="no: keep all"];
+  kmeans -> drop;
+  drop   -> s1out  [arrowhead=none, style=dotted];
+  drop   -> s2b    [xlabel="kept passages"];
+  s2a    -> s2b    [xlabel="internal knowledge"];
+  s2b    -> s2c;
+
+  // LLM calls (prompt ⇄ output)
+  s2a -> llm [dir=both, style=dashed, color="#2a78d6"];
+  s2b -> llm [dir=both, style=dashed, color="#2a78d6"];
+  s2c -> llm [dir=both, style=dashed, color="#2a78d6"];
+  llm -> answer;
+  answer -> result [arrowhead=none, style=dotted];
+
+  // annotations
+  caveat -> gate  [arrowhead=none, style=dotted, color="#b7791f", constraint=false];
+  result -> notes [style=invis];
+
+  { rank=same; query; clean; poison; }
+  { rank=same; llm; answer; }
+}
